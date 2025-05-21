@@ -7,11 +7,19 @@ import { IncomeModule } from './income/income.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { RolesModule } from './roles/roles.module';
 import { TransfersModule } from './transfers/transfers.module';
-import { DatabaseService } from './database/database.service';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [UsersModule, ExpensesModule, IncomeModule, NotificationsModule, RolesModule, TransfersModule],
+  imports: [
+    UsersModule,
+    ExpensesModule,
+    IncomeModule,
+    NotificationsModule,
+    RolesModule,
+    TransfersModule,
+    DatabaseModule,
+  ],
   controllers: [AppController],
-  providers: [AppService, DatabaseService],
+  providers: [AppService],
 })
 export class AppModule {}

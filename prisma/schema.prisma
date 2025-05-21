@@ -13,3 +13,113 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum RoleName {
+  ADMIN
+  CUSTOMER
+}
+
+enum NotificationTypes {
+  NEW_USER
+  NEW_EXPENSE
+  NEW_INCOME
+  NEW_TRANSFER
+  TRANSFER_SUCCESS
+  TRANSFER_FAIL
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  password      String
+  created_at    DateTime       @default(now())
+  role_id       Int
+  role          Role           @relation(fields: [role_id], references: [id])
+  expenses      Expense[]
+  income        Income[]
+  sentTransfers Transfer[]     @relation("SentTransfers")
+  receivedTransfers Transfer[] @relation("ReceivedTransfers")
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Role {
+  id        Int      @id @default(autoincrement())
+  name      RoleName @unique
+  dashboard Boolean
+  settings  Boolean
+  reports   Boolean
+  billing   Boolean
+  users     User[]
+
+  @@map("roles")
+}
+
+model Expense {
+  id             Int        @id @default(autoincrement())
+  name           String
+  expense_type_id Int
+  amount         String // Consider using Decimal or Float for monetary values in a real application
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
+  user_id        Int
+  expenseType    ExpenseType @relation(fields: [expense_type_id], references: [id])
+  user           User       @relation(fields: [user_id], references: [id])
+
+  @@map("expenses")
+}
+
+model Income {
+  id            Int        @id @default(autoincrement())
+  name          String
+  income_type_id Int
+  amount        String // Consider using Decimal or Float for monetary values in a real application
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+  user_id       Int
+  incomeType    IncomeType @relation(fields: [income_type_id], references: [id])
+  user          User       @relation(fields: [user_id], references: [id])
+
+  @@map("income")
+}
+
+model ExpenseType {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  expenses Expense[]
+
+  @@map("expense_type")
+}
+
+model IncomeType {
+  id     Int      @id @default(autoincrement())
+  name   String   @unique
+  income Income[]
+
+  @@map("income_type")
+}
+
+model Transfer {
+  id          Int      @id @default(autoincrement())
+  description String?
+  sender_id   Int
+  recipient_id Int
+  amount      Int // Consider using Decimal or Float for monetary values in a real application
+  created_at  DateTime @default(now())
+  sender      User     @relation("SentTransfers", fields: [sender_id], references: [id])
+  recipient   User     @relation("ReceivedTransfers", fields: [recipient_id], references: [id])
+
+  @@map("transfers")
+}
+
+model Notification {
+  id          Int               @id @default(autoincrement())
+  description String?
+  type        NotificationTypes
+  created_at  DateTime          @default(now())
+  user_id     Int
+  user        User              @relation(fields: [user_id], references: [id])
+
+  @@map("notifications")
+}
