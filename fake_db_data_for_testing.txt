@@ -1,0 +1,78 @@
+-- Disable foreign key checks for easier insertion (optional, but can help with circular dependencies)
+-- SET session_replication_role = 'replica';
+
+-- Data for 'roles' table
+INSERT INTO "roles" (id, name, dashboard, settings, reports, billing) VALUES
+(1, 'ADMIN', TRUE, TRUE, TRUE, TRUE),
+(2, 'CUSTOMER', TRUE, FALSE, TRUE, FALSE);
+
+-- Data for 'users' table
+INSERT INTO "users" (id, email, password, role_id) VALUES
+(1, 'admin@example.com', 'admin_password', 1),
+(2, 'john.doe@example.com', 'john_password', 2),
+(3, 'jane.smith@example.com', 'jane_password', 2),
+(4, 'peter.jones@example.com', 'peter_password', 2);
+
+-- Data for 'expense_type' table
+INSERT INTO "expense_type" (id, name) VALUES
+(1, 'Groceries'),
+(2, 'Rent'),
+(3, 'Utilities'),
+(4, 'Transportation'),
+(5, 'Entertainment'),
+(6, 'Dining Out');
+
+-- Data for 'income_type' table
+INSERT INTO "income_type" (id, name) VALUES
+(1, 'Salary'),
+(2, 'Freelance'),
+(3, 'Investments'),
+(4, 'Gift');
+
+-- Data for 'expenses' table
+INSERT INTO "expenses" (id, name, expense_type_id, amount, created_at, updated_at, user_id) VALUES
+(1, 'Weekly groceries', 1, '85.50', NOW(), NOW(), 2),
+(2, 'Monthly Rent', 2, '1200.00', NOW(), NOW(), 2),
+(3, 'Electricity Bill', 3, '75.20', NOW(), NOW(), 3),
+(4, 'Bus ticket', 4, '2.50', NOW(), NOW(), 2),
+(5, 'Movie tickets', 5, '30.00', NOW(), NOW(), 3),
+(6, 'Dinner with friends', 6, '55.00', NOW(), NOW(), 4),
+(7, 'Another grocery run', 1, '45.75', NOW(), NOW(), 2),
+(8, 'Internet bill', 3, '60.00', NOW(), NOW(), 3);
+
+-- Data for 'income' table
+INSERT INTO "income" (id, name, income_type_id, amount, created_at, updated_at, user_id) VALUES
+(1, 'Monthly Salary - May', 1, '3000.00', NOW(), NOW(), 2),
+(2, 'Freelance Project A', 2, '750.00', NOW(), NOW(), 3),
+(3, 'Investment Dividend', 3, '150.00', NOW(), NOW(), 2),
+(4, 'Birthday Gift', 4, '100.00', NOW(), NOW(), 4),
+(5, 'Monthly Salary - May', 1, '2800.00', NOW(), NOW(), 3);
+
+-- Data for 'transfers' table
+INSERT INTO "transfers" (id, description, sender_id, recipient_id, amount) VALUES
+(1, 'Shared dinner cost', 2, 3, 25),
+(2, 'Loan repayment', 3, 2, 100),
+(3, 'Gift to friend', 4, 2, 50);
+
+-- Data for 'notifications' table
+INSERT INTO "notifications" (id, description, type, user_id) VALUES
+(1, 'Welcome to our platform!', 'NEW_USER', 1),
+(2, 'Your expense for groceries has been recorded.', 'NEW_EXPENSE', 2),
+(3, 'New income from salary received.', 'NEW_INCOME', 2),
+(4, 'You received a transfer of $25 from John Doe.', 'TRANSFER_SUCCESS', 3),
+(5, 'New expense for electricity.', 'NEW_EXPENSE', 3),
+(6, 'Transfer to Jane Smith initiated.', 'NEW_TRANSFER', 2),
+(7, 'Welcome, Jane!', 'NEW_USER', 3);
+
+-- Re-enable foreign key checks (if you disabled them)
+-- SET session_replication_role = 'origin';
+
+-- Resetting sequence IDs for all tables to avoid conflicts with future inserts
+SELECT setval('users_id_seq', (SELECT MAX(id) FROM "users"));
+SELECT setval('roles_id_seq', (SELECT MAX(id) FROM "roles"));
+SELECT setval('expenses_id_seq', (SELECT MAX(id) FROM "expenses"));
+SELECT setval('income_id_seq', (SELECT MAX(id) FROM "income"));
+SELECT setval('expense_type_id_seq', (SELECT MAX(id) FROM "expense_type"));
+SELECT setval('income_type_id_seq', (SELECT MAX(id) FROM "income_type"));
+SELECT setval('transfers_id_seq', (SELECT MAX(id) FROM "transfers"));
+SELECT setval('notifications_id_seq', (SELECT MAX(id) FROM "notifications"));
