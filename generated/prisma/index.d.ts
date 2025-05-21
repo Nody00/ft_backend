@@ -1726,6 +1726,7 @@ export namespace Prisma {
     password: string | null
     created_at: Date | null
     role_id: number | null
+    deleted: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1734,6 +1735,7 @@ export namespace Prisma {
     password: string | null
     created_at: Date | null
     role_id: number | null
+    deleted: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1742,6 +1744,7 @@ export namespace Prisma {
     password: number
     created_at: number
     role_id: number
+    deleted: number
     _all: number
   }
 
@@ -1762,6 +1765,7 @@ export namespace Prisma {
     password?: true
     created_at?: true
     role_id?: true
+    deleted?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1770,6 +1774,7 @@ export namespace Prisma {
     password?: true
     created_at?: true
     role_id?: true
+    deleted?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1778,6 +1783,7 @@ export namespace Prisma {
     password?: true
     created_at?: true
     role_id?: true
+    deleted?: true
     _all?: true
   }
 
@@ -1873,6 +1879,7 @@ export namespace Prisma {
     password: string
     created_at: Date
     role_id: number
+    deleted: boolean
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1900,6 +1907,7 @@ export namespace Prisma {
     password?: boolean
     created_at?: boolean
     role_id?: boolean
+    deleted?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
     expenses?: boolean | User$expensesArgs<ExtArgs>
     income?: boolean | User$incomeArgs<ExtArgs>
@@ -1915,6 +1923,7 @@ export namespace Prisma {
     password?: boolean
     created_at?: boolean
     role_id?: boolean
+    deleted?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1924,6 +1933,7 @@ export namespace Prisma {
     password?: boolean
     created_at?: boolean
     role_id?: boolean
+    deleted?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1933,9 +1943,10 @@ export namespace Prisma {
     password?: boolean
     created_at?: boolean
     role_id?: boolean
+    deleted?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "created_at" | "role_id", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "created_at" | "role_id" | "deleted", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
     expenses?: boolean | User$expensesArgs<ExtArgs>
@@ -1968,6 +1979,7 @@ export namespace Prisma {
       password: string
       created_at: Date
       role_id: number
+      deleted: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2402,6 +2414,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly created_at: FieldRef<"User", 'DateTime'>
     readonly role_id: FieldRef<"User", 'Int'>
+    readonly deleted: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -2963,6 +2976,7 @@ export namespace Prisma {
     settings: boolean | null
     reports: boolean | null
     billing: boolean | null
+    deleted: boolean | null
   }
 
   export type RoleMaxAggregateOutputType = {
@@ -2972,6 +2986,7 @@ export namespace Prisma {
     settings: boolean | null
     reports: boolean | null
     billing: boolean | null
+    deleted: boolean | null
   }
 
   export type RoleCountAggregateOutputType = {
@@ -2981,6 +2996,7 @@ export namespace Prisma {
     settings: number
     reports: number
     billing: number
+    deleted: number
     _all: number
   }
 
@@ -3000,6 +3016,7 @@ export namespace Prisma {
     settings?: true
     reports?: true
     billing?: true
+    deleted?: true
   }
 
   export type RoleMaxAggregateInputType = {
@@ -3009,6 +3026,7 @@ export namespace Prisma {
     settings?: true
     reports?: true
     billing?: true
+    deleted?: true
   }
 
   export type RoleCountAggregateInputType = {
@@ -3018,6 +3036,7 @@ export namespace Prisma {
     settings?: true
     reports?: true
     billing?: true
+    deleted?: true
     _all?: true
   }
 
@@ -3114,6 +3133,7 @@ export namespace Prisma {
     settings: boolean
     reports: boolean
     billing: boolean
+    deleted: boolean
     _count: RoleCountAggregateOutputType | null
     _avg: RoleAvgAggregateOutputType | null
     _sum: RoleSumAggregateOutputType | null
@@ -3142,6 +3162,7 @@ export namespace Prisma {
     settings?: boolean
     reports?: boolean
     billing?: boolean
+    deleted?: boolean
     users?: boolean | Role$usersArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["role"]>
@@ -3153,6 +3174,7 @@ export namespace Prisma {
     settings?: boolean
     reports?: boolean
     billing?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["role"]>
 
   export type RoleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3162,6 +3184,7 @@ export namespace Prisma {
     settings?: boolean
     reports?: boolean
     billing?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["role"]>
 
   export type RoleSelectScalar = {
@@ -3171,9 +3194,10 @@ export namespace Prisma {
     settings?: boolean
     reports?: boolean
     billing?: boolean
+    deleted?: boolean
   }
 
-  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "dashboard" | "settings" | "reports" | "billing", ExtArgs["result"]["role"]>
+  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "dashboard" | "settings" | "reports" | "billing" | "deleted", ExtArgs["result"]["role"]>
   export type RoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Role$usersArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
@@ -3193,6 +3217,7 @@ export namespace Prisma {
       settings: boolean
       reports: boolean
       billing: boolean
+      deleted: boolean
     }, ExtArgs["result"]["role"]>
     composites: {}
   }
@@ -3623,6 +3648,7 @@ export namespace Prisma {
     readonly settings: FieldRef<"Role", 'Boolean'>
     readonly reports: FieldRef<"Role", 'Boolean'>
     readonly billing: FieldRef<"Role", 'Boolean'>
+    readonly deleted: FieldRef<"Role", 'Boolean'>
   }
     
 
@@ -4085,6 +4111,7 @@ export namespace Prisma {
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
+    deleted: boolean | null
   }
 
   export type ExpenseMaxAggregateOutputType = {
@@ -4095,6 +4122,7 @@ export namespace Prisma {
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
+    deleted: boolean | null
   }
 
   export type ExpenseCountAggregateOutputType = {
@@ -4105,6 +4133,7 @@ export namespace Prisma {
     created_at: number
     updated_at: number
     user_id: number
+    deleted: number
     _all: number
   }
 
@@ -4129,6 +4158,7 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     user_id?: true
+    deleted?: true
   }
 
   export type ExpenseMaxAggregateInputType = {
@@ -4139,6 +4169,7 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     user_id?: true
+    deleted?: true
   }
 
   export type ExpenseCountAggregateInputType = {
@@ -4149,6 +4180,7 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     user_id?: true
+    deleted?: true
     _all?: true
   }
 
@@ -4246,6 +4278,7 @@ export namespace Prisma {
     created_at: Date
     updated_at: Date
     user_id: number
+    deleted: boolean
     _count: ExpenseCountAggregateOutputType | null
     _avg: ExpenseAvgAggregateOutputType | null
     _sum: ExpenseSumAggregateOutputType | null
@@ -4275,6 +4308,7 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     expenseType?: boolean | ExpenseTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["expense"]>
@@ -4287,6 +4321,7 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     expenseType?: boolean | ExpenseTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["expense"]>
@@ -4299,6 +4334,7 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     expenseType?: boolean | ExpenseTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["expense"]>
@@ -4311,9 +4347,10 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
   }
 
-  export type ExpenseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "expense_type_id" | "amount" | "created_at" | "updated_at" | "user_id", ExtArgs["result"]["expense"]>
+  export type ExpenseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "expense_type_id" | "amount" | "created_at" | "updated_at" | "user_id" | "deleted", ExtArgs["result"]["expense"]>
   export type ExpenseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     expenseType?: boolean | ExpenseTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4341,6 +4378,7 @@ export namespace Prisma {
       created_at: Date
       updated_at: Date
       user_id: number
+      deleted: boolean
     }, ExtArgs["result"]["expense"]>
     composites: {}
   }
@@ -4773,6 +4811,7 @@ export namespace Prisma {
     readonly created_at: FieldRef<"Expense", 'DateTime'>
     readonly updated_at: FieldRef<"Expense", 'DateTime'>
     readonly user_id: FieldRef<"Expense", 'Int'>
+    readonly deleted: FieldRef<"Expense", 'Boolean'>
   }
     
 
@@ -5219,6 +5258,7 @@ export namespace Prisma {
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
+    deleted: boolean | null
   }
 
   export type IncomeMaxAggregateOutputType = {
@@ -5229,6 +5269,7 @@ export namespace Prisma {
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
+    deleted: boolean | null
   }
 
   export type IncomeCountAggregateOutputType = {
@@ -5239,6 +5280,7 @@ export namespace Prisma {
     created_at: number
     updated_at: number
     user_id: number
+    deleted: number
     _all: number
   }
 
@@ -5263,6 +5305,7 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     user_id?: true
+    deleted?: true
   }
 
   export type IncomeMaxAggregateInputType = {
@@ -5273,6 +5316,7 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     user_id?: true
+    deleted?: true
   }
 
   export type IncomeCountAggregateInputType = {
@@ -5283,6 +5327,7 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     user_id?: true
+    deleted?: true
     _all?: true
   }
 
@@ -5380,6 +5425,7 @@ export namespace Prisma {
     created_at: Date
     updated_at: Date
     user_id: number
+    deleted: boolean
     _count: IncomeCountAggregateOutputType | null
     _avg: IncomeAvgAggregateOutputType | null
     _sum: IncomeSumAggregateOutputType | null
@@ -5409,6 +5455,7 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     incomeType?: boolean | IncomeTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["income"]>
@@ -5421,6 +5468,7 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     incomeType?: boolean | IncomeTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["income"]>
@@ -5433,6 +5481,7 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     incomeType?: boolean | IncomeTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["income"]>
@@ -5445,9 +5494,10 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     user_id?: boolean
+    deleted?: boolean
   }
 
-  export type IncomeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "income_type_id" | "amount" | "created_at" | "updated_at" | "user_id", ExtArgs["result"]["income"]>
+  export type IncomeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "income_type_id" | "amount" | "created_at" | "updated_at" | "user_id" | "deleted", ExtArgs["result"]["income"]>
   export type IncomeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     incomeType?: boolean | IncomeTypeDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -5475,6 +5525,7 @@ export namespace Prisma {
       created_at: Date
       updated_at: Date
       user_id: number
+      deleted: boolean
     }, ExtArgs["result"]["income"]>
     composites: {}
   }
@@ -5907,6 +5958,7 @@ export namespace Prisma {
     readonly created_at: FieldRef<"Income", 'DateTime'>
     readonly updated_at: FieldRef<"Income", 'DateTime'>
     readonly user_id: FieldRef<"Income", 'Int'>
+    readonly deleted: FieldRef<"Income", 'Boolean'>
   }
     
 
@@ -6344,16 +6396,19 @@ export namespace Prisma {
   export type ExpenseTypeMinAggregateOutputType = {
     id: number | null
     name: string | null
+    deleted: boolean | null
   }
 
   export type ExpenseTypeMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    deleted: boolean | null
   }
 
   export type ExpenseTypeCountAggregateOutputType = {
     id: number
     name: number
+    deleted: number
     _all: number
   }
 
@@ -6369,16 +6424,19 @@ export namespace Prisma {
   export type ExpenseTypeMinAggregateInputType = {
     id?: true
     name?: true
+    deleted?: true
   }
 
   export type ExpenseTypeMaxAggregateInputType = {
     id?: true
     name?: true
+    deleted?: true
   }
 
   export type ExpenseTypeCountAggregateInputType = {
     id?: true
     name?: true
+    deleted?: true
     _all?: true
   }
 
@@ -6471,6 +6529,7 @@ export namespace Prisma {
   export type ExpenseTypeGroupByOutputType = {
     id: number
     name: string
+    deleted: boolean
     _count: ExpenseTypeCountAggregateOutputType | null
     _avg: ExpenseTypeAvgAggregateOutputType | null
     _sum: ExpenseTypeSumAggregateOutputType | null
@@ -6495,6 +6554,7 @@ export namespace Prisma {
   export type ExpenseTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    deleted?: boolean
     expenses?: boolean | ExpenseType$expensesArgs<ExtArgs>
     _count?: boolean | ExpenseTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["expenseType"]>
@@ -6502,19 +6562,22 @@ export namespace Prisma {
   export type ExpenseTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["expenseType"]>
 
   export type ExpenseTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["expenseType"]>
 
   export type ExpenseTypeSelectScalar = {
     id?: boolean
     name?: boolean
+    deleted?: boolean
   }
 
-  export type ExpenseTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["expenseType"]>
+  export type ExpenseTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "deleted", ExtArgs["result"]["expenseType"]>
   export type ExpenseTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     expenses?: boolean | ExpenseType$expensesArgs<ExtArgs>
     _count?: boolean | ExpenseTypeCountOutputTypeDefaultArgs<ExtArgs>
@@ -6530,6 +6593,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      deleted: boolean
     }, ExtArgs["result"]["expenseType"]>
     composites: {}
   }
@@ -6956,6 +7020,7 @@ export namespace Prisma {
   interface ExpenseTypeFieldRefs {
     readonly id: FieldRef<"ExpenseType", 'Int'>
     readonly name: FieldRef<"ExpenseType", 'String'>
+    readonly deleted: FieldRef<"ExpenseType", 'Boolean'>
   }
     
 
@@ -7409,16 +7474,19 @@ export namespace Prisma {
   export type IncomeTypeMinAggregateOutputType = {
     id: number | null
     name: string | null
+    deleted: boolean | null
   }
 
   export type IncomeTypeMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    deleted: boolean | null
   }
 
   export type IncomeTypeCountAggregateOutputType = {
     id: number
     name: number
+    deleted: number
     _all: number
   }
 
@@ -7434,16 +7502,19 @@ export namespace Prisma {
   export type IncomeTypeMinAggregateInputType = {
     id?: true
     name?: true
+    deleted?: true
   }
 
   export type IncomeTypeMaxAggregateInputType = {
     id?: true
     name?: true
+    deleted?: true
   }
 
   export type IncomeTypeCountAggregateInputType = {
     id?: true
     name?: true
+    deleted?: true
     _all?: true
   }
 
@@ -7536,6 +7607,7 @@ export namespace Prisma {
   export type IncomeTypeGroupByOutputType = {
     id: number
     name: string
+    deleted: boolean
     _count: IncomeTypeCountAggregateOutputType | null
     _avg: IncomeTypeAvgAggregateOutputType | null
     _sum: IncomeTypeSumAggregateOutputType | null
@@ -7560,6 +7632,7 @@ export namespace Prisma {
   export type IncomeTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    deleted?: boolean
     income?: boolean | IncomeType$incomeArgs<ExtArgs>
     _count?: boolean | IncomeTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incomeType"]>
@@ -7567,19 +7640,22 @@ export namespace Prisma {
   export type IncomeTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["incomeType"]>
 
   export type IncomeTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["incomeType"]>
 
   export type IncomeTypeSelectScalar = {
     id?: boolean
     name?: boolean
+    deleted?: boolean
   }
 
-  export type IncomeTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["incomeType"]>
+  export type IncomeTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "deleted", ExtArgs["result"]["incomeType"]>
   export type IncomeTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     income?: boolean | IncomeType$incomeArgs<ExtArgs>
     _count?: boolean | IncomeTypeCountOutputTypeDefaultArgs<ExtArgs>
@@ -7595,6 +7671,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      deleted: boolean
     }, ExtArgs["result"]["incomeType"]>
     composites: {}
   }
@@ -8021,6 +8098,7 @@ export namespace Prisma {
   interface IncomeTypeFieldRefs {
     readonly id: FieldRef<"IncomeType", 'Int'>
     readonly name: FieldRef<"IncomeType", 'String'>
+    readonly deleted: FieldRef<"IncomeType", 'Boolean'>
   }
     
 
@@ -8484,6 +8562,7 @@ export namespace Prisma {
     recipient_id: number | null
     amount: number | null
     created_at: Date | null
+    deleted: boolean | null
   }
 
   export type TransferMaxAggregateOutputType = {
@@ -8493,6 +8572,7 @@ export namespace Prisma {
     recipient_id: number | null
     amount: number | null
     created_at: Date | null
+    deleted: boolean | null
   }
 
   export type TransferCountAggregateOutputType = {
@@ -8502,6 +8582,7 @@ export namespace Prisma {
     recipient_id: number
     amount: number
     created_at: number
+    deleted: number
     _all: number
   }
 
@@ -8527,6 +8608,7 @@ export namespace Prisma {
     recipient_id?: true
     amount?: true
     created_at?: true
+    deleted?: true
   }
 
   export type TransferMaxAggregateInputType = {
@@ -8536,6 +8618,7 @@ export namespace Prisma {
     recipient_id?: true
     amount?: true
     created_at?: true
+    deleted?: true
   }
 
   export type TransferCountAggregateInputType = {
@@ -8545,6 +8628,7 @@ export namespace Prisma {
     recipient_id?: true
     amount?: true
     created_at?: true
+    deleted?: true
     _all?: true
   }
 
@@ -8641,6 +8725,7 @@ export namespace Prisma {
     recipient_id: number
     amount: number
     created_at: Date
+    deleted: boolean
     _count: TransferCountAggregateOutputType | null
     _avg: TransferAvgAggregateOutputType | null
     _sum: TransferSumAggregateOutputType | null
@@ -8669,6 +8754,7 @@ export namespace Prisma {
     recipient_id?: boolean
     amount?: boolean
     created_at?: boolean
+    deleted?: boolean
     sender?: boolean | UserDefaultArgs<ExtArgs>
     recipient?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transfer"]>
@@ -8680,6 +8766,7 @@ export namespace Prisma {
     recipient_id?: boolean
     amount?: boolean
     created_at?: boolean
+    deleted?: boolean
     sender?: boolean | UserDefaultArgs<ExtArgs>
     recipient?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transfer"]>
@@ -8691,6 +8778,7 @@ export namespace Prisma {
     recipient_id?: boolean
     amount?: boolean
     created_at?: boolean
+    deleted?: boolean
     sender?: boolean | UserDefaultArgs<ExtArgs>
     recipient?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transfer"]>
@@ -8702,9 +8790,10 @@ export namespace Prisma {
     recipient_id?: boolean
     amount?: boolean
     created_at?: boolean
+    deleted?: boolean
   }
 
-  export type TransferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "sender_id" | "recipient_id" | "amount" | "created_at", ExtArgs["result"]["transfer"]>
+  export type TransferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "sender_id" | "recipient_id" | "amount" | "created_at" | "deleted", ExtArgs["result"]["transfer"]>
   export type TransferInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sender?: boolean | UserDefaultArgs<ExtArgs>
     recipient?: boolean | UserDefaultArgs<ExtArgs>
@@ -8731,6 +8820,7 @@ export namespace Prisma {
       recipient_id: number
       amount: number
       created_at: Date
+      deleted: boolean
     }, ExtArgs["result"]["transfer"]>
     composites: {}
   }
@@ -9162,6 +9252,7 @@ export namespace Prisma {
     readonly recipient_id: FieldRef<"Transfer", 'Int'>
     readonly amount: FieldRef<"Transfer", 'Int'>
     readonly created_at: FieldRef<"Transfer", 'DateTime'>
+    readonly deleted: FieldRef<"Transfer", 'Boolean'>
   }
     
 
@@ -9604,6 +9695,7 @@ export namespace Prisma {
     type: $Enums.NotificationTypes | null
     created_at: Date | null
     user_id: number | null
+    deleted: boolean | null
   }
 
   export type NotificationMaxAggregateOutputType = {
@@ -9612,6 +9704,7 @@ export namespace Prisma {
     type: $Enums.NotificationTypes | null
     created_at: Date | null
     user_id: number | null
+    deleted: boolean | null
   }
 
   export type NotificationCountAggregateOutputType = {
@@ -9620,6 +9713,7 @@ export namespace Prisma {
     type: number
     created_at: number
     user_id: number
+    deleted: number
     _all: number
   }
 
@@ -9640,6 +9734,7 @@ export namespace Prisma {
     type?: true
     created_at?: true
     user_id?: true
+    deleted?: true
   }
 
   export type NotificationMaxAggregateInputType = {
@@ -9648,6 +9743,7 @@ export namespace Prisma {
     type?: true
     created_at?: true
     user_id?: true
+    deleted?: true
   }
 
   export type NotificationCountAggregateInputType = {
@@ -9656,6 +9752,7 @@ export namespace Prisma {
     type?: true
     created_at?: true
     user_id?: true
+    deleted?: true
     _all?: true
   }
 
@@ -9751,6 +9848,7 @@ export namespace Prisma {
     type: $Enums.NotificationTypes
     created_at: Date
     user_id: number
+    deleted: boolean
     _count: NotificationCountAggregateOutputType | null
     _avg: NotificationAvgAggregateOutputType | null
     _sum: NotificationSumAggregateOutputType | null
@@ -9778,6 +9876,7 @@ export namespace Prisma {
     type?: boolean
     created_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notification"]>
 
@@ -9787,6 +9886,7 @@ export namespace Prisma {
     type?: boolean
     created_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notification"]>
 
@@ -9796,6 +9896,7 @@ export namespace Prisma {
     type?: boolean
     created_at?: boolean
     user_id?: boolean
+    deleted?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notification"]>
 
@@ -9805,9 +9906,10 @@ export namespace Prisma {
     type?: boolean
     created_at?: boolean
     user_id?: boolean
+    deleted?: boolean
   }
 
-  export type NotificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "type" | "created_at" | "user_id", ExtArgs["result"]["notification"]>
+  export type NotificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "type" | "created_at" | "user_id" | "deleted", ExtArgs["result"]["notification"]>
   export type NotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -9829,6 +9931,7 @@ export namespace Prisma {
       type: $Enums.NotificationTypes
       created_at: Date
       user_id: number
+      deleted: boolean
     }, ExtArgs["result"]["notification"]>
     composites: {}
   }
@@ -10258,6 +10361,7 @@ export namespace Prisma {
     readonly type: FieldRef<"Notification", 'NotificationTypes'>
     readonly created_at: FieldRef<"Notification", 'DateTime'>
     readonly user_id: FieldRef<"Notification", 'Int'>
+    readonly deleted: FieldRef<"Notification", 'Boolean'>
   }
     
 
@@ -10691,7 +10795,8 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     created_at: 'created_at',
-    role_id: 'role_id'
+    role_id: 'role_id',
+    deleted: 'deleted'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -10703,7 +10808,8 @@ export namespace Prisma {
     dashboard: 'dashboard',
     settings: 'settings',
     reports: 'reports',
-    billing: 'billing'
+    billing: 'billing',
+    deleted: 'deleted'
   };
 
   export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
@@ -10716,7 +10822,8 @@ export namespace Prisma {
     amount: 'amount',
     created_at: 'created_at',
     updated_at: 'updated_at',
-    user_id: 'user_id'
+    user_id: 'user_id',
+    deleted: 'deleted'
   };
 
   export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
@@ -10729,7 +10836,8 @@ export namespace Prisma {
     amount: 'amount',
     created_at: 'created_at',
     updated_at: 'updated_at',
-    user_id: 'user_id'
+    user_id: 'user_id',
+    deleted: 'deleted'
   };
 
   export type IncomeScalarFieldEnum = (typeof IncomeScalarFieldEnum)[keyof typeof IncomeScalarFieldEnum]
@@ -10737,7 +10845,8 @@ export namespace Prisma {
 
   export const ExpenseTypeScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    deleted: 'deleted'
   };
 
   export type ExpenseTypeScalarFieldEnum = (typeof ExpenseTypeScalarFieldEnum)[keyof typeof ExpenseTypeScalarFieldEnum]
@@ -10745,7 +10854,8 @@ export namespace Prisma {
 
   export const IncomeTypeScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    deleted: 'deleted'
   };
 
   export type IncomeTypeScalarFieldEnum = (typeof IncomeTypeScalarFieldEnum)[keyof typeof IncomeTypeScalarFieldEnum]
@@ -10757,7 +10867,8 @@ export namespace Prisma {
     sender_id: 'sender_id',
     recipient_id: 'recipient_id',
     amount: 'amount',
-    created_at: 'created_at'
+    created_at: 'created_at',
+    deleted: 'deleted'
   };
 
   export type TransferScalarFieldEnum = (typeof TransferScalarFieldEnum)[keyof typeof TransferScalarFieldEnum]
@@ -10768,7 +10879,8 @@ export namespace Prisma {
     description: 'description',
     type: 'type',
     created_at: 'created_at',
-    user_id: 'user_id'
+    user_id: 'user_id',
+    deleted: 'deleted'
   };
 
   export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -10846,6 +10958,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'RoleName'
    */
   export type EnumRoleNameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleName'>
@@ -10856,13 +10975,6 @@ export namespace Prisma {
    * Reference to a field of type 'RoleName[]'
    */
   export type ListEnumRoleNameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleName[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -10906,6 +11018,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     created_at?: DateTimeFilter<"User"> | Date | string
     role_id?: IntFilter<"User"> | number
+    deleted?: BoolFilter<"User"> | boolean
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     expenses?: ExpenseListRelationFilter
     income?: IncomeListRelationFilter
@@ -10920,6 +11033,7 @@ export namespace Prisma {
     password?: SortOrder
     created_at?: SortOrder
     role_id?: SortOrder
+    deleted?: SortOrder
     role?: RoleOrderByWithRelationInput
     expenses?: ExpenseOrderByRelationAggregateInput
     income?: IncomeOrderByRelationAggregateInput
@@ -10937,6 +11051,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     created_at?: DateTimeFilter<"User"> | Date | string
     role_id?: IntFilter<"User"> | number
+    deleted?: BoolFilter<"User"> | boolean
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     expenses?: ExpenseListRelationFilter
     income?: IncomeListRelationFilter
@@ -10951,6 +11066,7 @@ export namespace Prisma {
     password?: SortOrder
     created_at?: SortOrder
     role_id?: SortOrder
+    deleted?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -10967,6 +11083,7 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
     role_id?: IntWithAggregatesFilter<"User"> | number
+    deleted?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type RoleWhereInput = {
@@ -10979,6 +11096,7 @@ export namespace Prisma {
     settings?: BoolFilter<"Role"> | boolean
     reports?: BoolFilter<"Role"> | boolean
     billing?: BoolFilter<"Role"> | boolean
+    deleted?: BoolFilter<"Role"> | boolean
     users?: UserListRelationFilter
   }
 
@@ -10989,6 +11107,7 @@ export namespace Prisma {
     settings?: SortOrder
     reports?: SortOrder
     billing?: SortOrder
+    deleted?: SortOrder
     users?: UserOrderByRelationAggregateInput
   }
 
@@ -11002,6 +11121,7 @@ export namespace Prisma {
     settings?: BoolFilter<"Role"> | boolean
     reports?: BoolFilter<"Role"> | boolean
     billing?: BoolFilter<"Role"> | boolean
+    deleted?: BoolFilter<"Role"> | boolean
     users?: UserListRelationFilter
   }, "id" | "name">
 
@@ -11012,6 +11132,7 @@ export namespace Prisma {
     settings?: SortOrder
     reports?: SortOrder
     billing?: SortOrder
+    deleted?: SortOrder
     _count?: RoleCountOrderByAggregateInput
     _avg?: RoleAvgOrderByAggregateInput
     _max?: RoleMaxOrderByAggregateInput
@@ -11029,6 +11150,7 @@ export namespace Prisma {
     settings?: BoolWithAggregatesFilter<"Role"> | boolean
     reports?: BoolWithAggregatesFilter<"Role"> | boolean
     billing?: BoolWithAggregatesFilter<"Role"> | boolean
+    deleted?: BoolWithAggregatesFilter<"Role"> | boolean
   }
 
   export type ExpenseWhereInput = {
@@ -11042,6 +11164,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Expense"> | Date | string
     updated_at?: DateTimeFilter<"Expense"> | Date | string
     user_id?: IntFilter<"Expense"> | number
+    deleted?: BoolFilter<"Expense"> | boolean
     expenseType?: XOR<ExpenseTypeScalarRelationFilter, ExpenseTypeWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -11054,6 +11177,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
     expenseType?: ExpenseTypeOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
@@ -11069,6 +11193,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Expense"> | Date | string
     updated_at?: DateTimeFilter<"Expense"> | Date | string
     user_id?: IntFilter<"Expense"> | number
+    deleted?: BoolFilter<"Expense"> | boolean
     expenseType?: XOR<ExpenseTypeScalarRelationFilter, ExpenseTypeWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -11081,6 +11206,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
     _count?: ExpenseCountOrderByAggregateInput
     _avg?: ExpenseAvgOrderByAggregateInput
     _max?: ExpenseMaxOrderByAggregateInput
@@ -11099,6 +11225,7 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"Expense"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Expense"> | Date | string
     user_id?: IntWithAggregatesFilter<"Expense"> | number
+    deleted?: BoolWithAggregatesFilter<"Expense"> | boolean
   }
 
   export type IncomeWhereInput = {
@@ -11112,6 +11239,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Income"> | Date | string
     updated_at?: DateTimeFilter<"Income"> | Date | string
     user_id?: IntFilter<"Income"> | number
+    deleted?: BoolFilter<"Income"> | boolean
     incomeType?: XOR<IncomeTypeScalarRelationFilter, IncomeTypeWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -11124,6 +11252,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
     incomeType?: IncomeTypeOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
@@ -11139,6 +11268,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Income"> | Date | string
     updated_at?: DateTimeFilter<"Income"> | Date | string
     user_id?: IntFilter<"Income"> | number
+    deleted?: BoolFilter<"Income"> | boolean
     incomeType?: XOR<IncomeTypeScalarRelationFilter, IncomeTypeWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -11151,6 +11281,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
     _count?: IncomeCountOrderByAggregateInput
     _avg?: IncomeAvgOrderByAggregateInput
     _max?: IncomeMaxOrderByAggregateInput
@@ -11169,6 +11300,7 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"Income"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Income"> | Date | string
     user_id?: IntWithAggregatesFilter<"Income"> | number
+    deleted?: BoolWithAggregatesFilter<"Income"> | boolean
   }
 
   export type ExpenseTypeWhereInput = {
@@ -11177,12 +11309,14 @@ export namespace Prisma {
     NOT?: ExpenseTypeWhereInput | ExpenseTypeWhereInput[]
     id?: IntFilter<"ExpenseType"> | number
     name?: StringFilter<"ExpenseType"> | string
+    deleted?: BoolFilter<"ExpenseType"> | boolean
     expenses?: ExpenseListRelationFilter
   }
 
   export type ExpenseTypeOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
     expenses?: ExpenseOrderByRelationAggregateInput
   }
 
@@ -11192,12 +11326,14 @@ export namespace Prisma {
     AND?: ExpenseTypeWhereInput | ExpenseTypeWhereInput[]
     OR?: ExpenseTypeWhereInput[]
     NOT?: ExpenseTypeWhereInput | ExpenseTypeWhereInput[]
+    deleted?: BoolFilter<"ExpenseType"> | boolean
     expenses?: ExpenseListRelationFilter
   }, "id" | "name">
 
   export type ExpenseTypeOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
     _count?: ExpenseTypeCountOrderByAggregateInput
     _avg?: ExpenseTypeAvgOrderByAggregateInput
     _max?: ExpenseTypeMaxOrderByAggregateInput
@@ -11211,6 +11347,7 @@ export namespace Prisma {
     NOT?: ExpenseTypeScalarWhereWithAggregatesInput | ExpenseTypeScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ExpenseType"> | number
     name?: StringWithAggregatesFilter<"ExpenseType"> | string
+    deleted?: BoolWithAggregatesFilter<"ExpenseType"> | boolean
   }
 
   export type IncomeTypeWhereInput = {
@@ -11219,12 +11356,14 @@ export namespace Prisma {
     NOT?: IncomeTypeWhereInput | IncomeTypeWhereInput[]
     id?: IntFilter<"IncomeType"> | number
     name?: StringFilter<"IncomeType"> | string
+    deleted?: BoolFilter<"IncomeType"> | boolean
     income?: IncomeListRelationFilter
   }
 
   export type IncomeTypeOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
     income?: IncomeOrderByRelationAggregateInput
   }
 
@@ -11234,12 +11373,14 @@ export namespace Prisma {
     AND?: IncomeTypeWhereInput | IncomeTypeWhereInput[]
     OR?: IncomeTypeWhereInput[]
     NOT?: IncomeTypeWhereInput | IncomeTypeWhereInput[]
+    deleted?: BoolFilter<"IncomeType"> | boolean
     income?: IncomeListRelationFilter
   }, "id" | "name">
 
   export type IncomeTypeOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
     _count?: IncomeTypeCountOrderByAggregateInput
     _avg?: IncomeTypeAvgOrderByAggregateInput
     _max?: IncomeTypeMaxOrderByAggregateInput
@@ -11253,6 +11394,7 @@ export namespace Prisma {
     NOT?: IncomeTypeScalarWhereWithAggregatesInput | IncomeTypeScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"IncomeType"> | number
     name?: StringWithAggregatesFilter<"IncomeType"> | string
+    deleted?: BoolWithAggregatesFilter<"IncomeType"> | boolean
   }
 
   export type TransferWhereInput = {
@@ -11265,6 +11407,7 @@ export namespace Prisma {
     recipient_id?: IntFilter<"Transfer"> | number
     amount?: IntFilter<"Transfer"> | number
     created_at?: DateTimeFilter<"Transfer"> | Date | string
+    deleted?: BoolFilter<"Transfer"> | boolean
     sender?: XOR<UserScalarRelationFilter, UserWhereInput>
     recipient?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -11276,6 +11419,7 @@ export namespace Prisma {
     recipient_id?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    deleted?: SortOrder
     sender?: UserOrderByWithRelationInput
     recipient?: UserOrderByWithRelationInput
   }
@@ -11290,6 +11434,7 @@ export namespace Prisma {
     recipient_id?: IntFilter<"Transfer"> | number
     amount?: IntFilter<"Transfer"> | number
     created_at?: DateTimeFilter<"Transfer"> | Date | string
+    deleted?: BoolFilter<"Transfer"> | boolean
     sender?: XOR<UserScalarRelationFilter, UserWhereInput>
     recipient?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -11301,6 +11446,7 @@ export namespace Prisma {
     recipient_id?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    deleted?: SortOrder
     _count?: TransferCountOrderByAggregateInput
     _avg?: TransferAvgOrderByAggregateInput
     _max?: TransferMaxOrderByAggregateInput
@@ -11318,6 +11464,7 @@ export namespace Prisma {
     recipient_id?: IntWithAggregatesFilter<"Transfer"> | number
     amount?: IntWithAggregatesFilter<"Transfer"> | number
     created_at?: DateTimeWithAggregatesFilter<"Transfer"> | Date | string
+    deleted?: BoolWithAggregatesFilter<"Transfer"> | boolean
   }
 
   export type NotificationWhereInput = {
@@ -11329,6 +11476,7 @@ export namespace Prisma {
     type?: EnumNotificationTypesFilter<"Notification"> | $Enums.NotificationTypes
     created_at?: DateTimeFilter<"Notification"> | Date | string
     user_id?: IntFilter<"Notification"> | number
+    deleted?: BoolFilter<"Notification"> | boolean
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -11338,6 +11486,7 @@ export namespace Prisma {
     type?: SortOrder
     created_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -11350,6 +11499,7 @@ export namespace Prisma {
     type?: EnumNotificationTypesFilter<"Notification"> | $Enums.NotificationTypes
     created_at?: DateTimeFilter<"Notification"> | Date | string
     user_id?: IntFilter<"Notification"> | number
+    deleted?: BoolFilter<"Notification"> | boolean
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -11359,6 +11509,7 @@ export namespace Prisma {
     type?: SortOrder
     created_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
     _count?: NotificationCountOrderByAggregateInput
     _avg?: NotificationAvgOrderByAggregateInput
     _max?: NotificationMaxOrderByAggregateInput
@@ -11375,12 +11526,14 @@ export namespace Prisma {
     type?: EnumNotificationTypesWithAggregatesFilter<"Notification"> | $Enums.NotificationTypes
     created_at?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
     user_id?: IntWithAggregatesFilter<"Notification"> | number
+    deleted?: BoolWithAggregatesFilter<"Notification"> | boolean
   }
 
   export type UserCreateInput = {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     role: RoleCreateNestedOneWithoutUsersInput
     expenses?: ExpenseCreateNestedManyWithoutUserInput
     income?: IncomeCreateNestedManyWithoutUserInput
@@ -11395,6 +11548,7 @@ export namespace Prisma {
     password: string
     created_at?: Date | string
     role_id: number
+    deleted?: boolean
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
     income?: IncomeUncheckedCreateNestedManyWithoutUserInput
     sentTransfers?: TransferUncheckedCreateNestedManyWithoutSenderInput
@@ -11406,6 +11560,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
     income?: IncomeUpdateManyWithoutUserNestedInput
@@ -11420,6 +11575,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
     income?: IncomeUncheckedUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUncheckedUpdateManyWithoutSenderNestedInput
@@ -11433,12 +11589,14 @@ export namespace Prisma {
     password: string
     created_at?: Date | string
     role_id: number
+    deleted?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -11447,6 +11605,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RoleCreateInput = {
@@ -11455,6 +11614,7 @@ export namespace Prisma {
     settings: boolean
     reports: boolean
     billing: boolean
+    deleted?: boolean
     users?: UserCreateNestedManyWithoutRoleInput
   }
 
@@ -11465,6 +11625,7 @@ export namespace Prisma {
     settings: boolean
     reports: boolean
     billing: boolean
+    deleted?: boolean
     users?: UserUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -11474,6 +11635,7 @@ export namespace Prisma {
     settings?: BoolFieldUpdateOperationsInput | boolean
     reports?: BoolFieldUpdateOperationsInput | boolean
     billing?: BoolFieldUpdateOperationsInput | boolean
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     users?: UserUpdateManyWithoutRoleNestedInput
   }
 
@@ -11484,6 +11646,7 @@ export namespace Prisma {
     settings?: BoolFieldUpdateOperationsInput | boolean
     reports?: BoolFieldUpdateOperationsInput | boolean
     billing?: BoolFieldUpdateOperationsInput | boolean
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -11494,6 +11657,7 @@ export namespace Prisma {
     settings: boolean
     reports: boolean
     billing: boolean
+    deleted?: boolean
   }
 
   export type RoleUpdateManyMutationInput = {
@@ -11502,6 +11666,7 @@ export namespace Prisma {
     settings?: BoolFieldUpdateOperationsInput | boolean
     reports?: BoolFieldUpdateOperationsInput | boolean
     billing?: BoolFieldUpdateOperationsInput | boolean
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RoleUncheckedUpdateManyInput = {
@@ -11511,6 +11676,7 @@ export namespace Prisma {
     settings?: BoolFieldUpdateOperationsInput | boolean
     reports?: BoolFieldUpdateOperationsInput | boolean
     billing?: BoolFieldUpdateOperationsInput | boolean
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseCreateInput = {
@@ -11518,6 +11684,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
     expenseType: ExpenseTypeCreateNestedOneWithoutExpensesInput
     user: UserCreateNestedOneWithoutExpensesInput
   }
@@ -11530,6 +11697,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type ExpenseUpdateInput = {
@@ -11537,6 +11705,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenseType?: ExpenseTypeUpdateOneRequiredWithoutExpensesNestedInput
     user?: UserUpdateOneRequiredWithoutExpensesNestedInput
   }
@@ -11549,6 +11718,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseCreateManyInput = {
@@ -11559,6 +11729,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type ExpenseUpdateManyMutationInput = {
@@ -11566,6 +11737,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseUncheckedUpdateManyInput = {
@@ -11576,6 +11748,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeCreateInput = {
@@ -11583,6 +11756,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
     incomeType: IncomeTypeCreateNestedOneWithoutIncomeInput
     user: UserCreateNestedOneWithoutIncomeInput
   }
@@ -11595,6 +11769,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type IncomeUpdateInput = {
@@ -11602,6 +11777,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     incomeType?: IncomeTypeUpdateOneRequiredWithoutIncomeNestedInput
     user?: UserUpdateOneRequiredWithoutIncomeNestedInput
   }
@@ -11614,6 +11790,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeCreateManyInput = {
@@ -11624,6 +11801,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type IncomeUpdateManyMutationInput = {
@@ -11631,6 +11809,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeUncheckedUpdateManyInput = {
@@ -11641,84 +11820,100 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseTypeCreateInput = {
     name: string
+    deleted?: boolean
     expenses?: ExpenseCreateNestedManyWithoutExpenseTypeInput
   }
 
   export type ExpenseTypeUncheckedCreateInput = {
     id?: number
     name: string
+    deleted?: boolean
     expenses?: ExpenseUncheckedCreateNestedManyWithoutExpenseTypeInput
   }
 
   export type ExpenseTypeUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUpdateManyWithoutExpenseTypeNestedInput
   }
 
   export type ExpenseTypeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUncheckedUpdateManyWithoutExpenseTypeNestedInput
   }
 
   export type ExpenseTypeCreateManyInput = {
     id?: number
     name: string
+    deleted?: boolean
   }
 
   export type ExpenseTypeUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseTypeUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeTypeCreateInput = {
     name: string
+    deleted?: boolean
     income?: IncomeCreateNestedManyWithoutIncomeTypeInput
   }
 
   export type IncomeTypeUncheckedCreateInput = {
     id?: number
     name: string
+    deleted?: boolean
     income?: IncomeUncheckedCreateNestedManyWithoutIncomeTypeInput
   }
 
   export type IncomeTypeUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     income?: IncomeUpdateManyWithoutIncomeTypeNestedInput
   }
 
   export type IncomeTypeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     income?: IncomeUncheckedUpdateManyWithoutIncomeTypeNestedInput
   }
 
   export type IncomeTypeCreateManyInput = {
     id?: number
     name: string
+    deleted?: boolean
   }
 
   export type IncomeTypeUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeTypeUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferCreateInput = {
     description?: string | null
     amount: number
     created_at?: Date | string
+    deleted?: boolean
     sender: UserCreateNestedOneWithoutSentTransfersInput
     recipient: UserCreateNestedOneWithoutReceivedTransfersInput
   }
@@ -11730,12 +11925,14 @@ export namespace Prisma {
     recipient_id: number
     amount: number
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type TransferUpdateInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     sender?: UserUpdateOneRequiredWithoutSentTransfersNestedInput
     recipient?: UserUpdateOneRequiredWithoutReceivedTransfersNestedInput
   }
@@ -11747,6 +11944,7 @@ export namespace Prisma {
     recipient_id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferCreateManyInput = {
@@ -11756,12 +11954,14 @@ export namespace Prisma {
     recipient_id: number
     amount: number
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type TransferUpdateManyMutationInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferUncheckedUpdateManyInput = {
@@ -11771,12 +11971,14 @@ export namespace Prisma {
     recipient_id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type NotificationCreateInput = {
     description?: string | null
     type: $Enums.NotificationTypes
     created_at?: Date | string
+    deleted?: boolean
     user: UserCreateNestedOneWithoutNotificationsInput
   }
 
@@ -11786,12 +11988,14 @@ export namespace Prisma {
     type: $Enums.NotificationTypes
     created_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type NotificationUpdateInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypesFieldUpdateOperationsInput | $Enums.NotificationTypes
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutNotificationsNestedInput
   }
 
@@ -11801,6 +12005,7 @@ export namespace Prisma {
     type?: EnumNotificationTypesFieldUpdateOperationsInput | $Enums.NotificationTypes
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type NotificationCreateManyInput = {
@@ -11809,12 +12014,14 @@ export namespace Prisma {
     type: $Enums.NotificationTypes
     created_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type NotificationUpdateManyMutationInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypesFieldUpdateOperationsInput | $Enums.NotificationTypes
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type NotificationUncheckedUpdateManyInput = {
@@ -11823,6 +12030,7 @@ export namespace Prisma {
     type?: EnumNotificationTypesFieldUpdateOperationsInput | $Enums.NotificationTypes
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -11860,6 +12068,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type RoleScalarRelationFilter = {
@@ -11913,6 +12126,7 @@ export namespace Prisma {
     password?: SortOrder
     created_at?: SortOrder
     role_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -11926,6 +12140,7 @@ export namespace Prisma {
     password?: SortOrder
     created_at?: SortOrder
     role_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -11934,6 +12149,7 @@ export namespace Prisma {
     password?: SortOrder
     created_at?: SortOrder
     role_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -11989,16 +12205,19 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type EnumRoleNameFilter<$PrismaModel = never> = {
     equals?: $Enums.RoleName | EnumRoleNameFieldRefInput<$PrismaModel>
     in?: $Enums.RoleName[] | ListEnumRoleNameFieldRefInput<$PrismaModel>
     notIn?: $Enums.RoleName[] | ListEnumRoleNameFieldRefInput<$PrismaModel>
     not?: NestedEnumRoleNameFilter<$PrismaModel> | $Enums.RoleName
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type UserListRelationFilter = {
@@ -12018,6 +12237,7 @@ export namespace Prisma {
     settings?: SortOrder
     reports?: SortOrder
     billing?: SortOrder
+    deleted?: SortOrder
   }
 
   export type RoleAvgOrderByAggregateInput = {
@@ -12031,6 +12251,7 @@ export namespace Prisma {
     settings?: SortOrder
     reports?: SortOrder
     billing?: SortOrder
+    deleted?: SortOrder
   }
 
   export type RoleMinOrderByAggregateInput = {
@@ -12040,6 +12261,7 @@ export namespace Prisma {
     settings?: SortOrder
     reports?: SortOrder
     billing?: SortOrder
+    deleted?: SortOrder
   }
 
   export type RoleSumOrderByAggregateInput = {
@@ -12054,14 +12276,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleNameFilter<$PrismaModel>
     _max?: NestedEnumRoleNameFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ExpenseTypeScalarRelationFilter = {
@@ -12082,6 +12296,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type ExpenseAvgOrderByAggregateInput = {
@@ -12098,6 +12313,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type ExpenseMinOrderByAggregateInput = {
@@ -12108,6 +12324,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type ExpenseSumOrderByAggregateInput = {
@@ -12129,6 +12346,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type IncomeAvgOrderByAggregateInput = {
@@ -12145,6 +12363,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type IncomeMinOrderByAggregateInput = {
@@ -12155,6 +12374,7 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type IncomeSumOrderByAggregateInput = {
@@ -12166,6 +12386,7 @@ export namespace Prisma {
   export type ExpenseTypeCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
   }
 
   export type ExpenseTypeAvgOrderByAggregateInput = {
@@ -12175,11 +12396,13 @@ export namespace Prisma {
   export type ExpenseTypeMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
   }
 
   export type ExpenseTypeMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
   }
 
   export type ExpenseTypeSumOrderByAggregateInput = {
@@ -12189,6 +12412,7 @@ export namespace Prisma {
   export type IncomeTypeCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
   }
 
   export type IncomeTypeAvgOrderByAggregateInput = {
@@ -12198,11 +12422,13 @@ export namespace Prisma {
   export type IncomeTypeMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
   }
 
   export type IncomeTypeMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    deleted?: SortOrder
   }
 
   export type IncomeTypeSumOrderByAggregateInput = {
@@ -12236,6 +12462,7 @@ export namespace Prisma {
     recipient_id?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    deleted?: SortOrder
   }
 
   export type TransferAvgOrderByAggregateInput = {
@@ -12252,6 +12479,7 @@ export namespace Prisma {
     recipient_id?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    deleted?: SortOrder
   }
 
   export type TransferMinOrderByAggregateInput = {
@@ -12261,6 +12489,7 @@ export namespace Prisma {
     recipient_id?: SortOrder
     amount?: SortOrder
     created_at?: SortOrder
+    deleted?: SortOrder
   }
 
   export type TransferSumOrderByAggregateInput = {
@@ -12301,6 +12530,7 @@ export namespace Prisma {
     type?: SortOrder
     created_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type NotificationAvgOrderByAggregateInput = {
@@ -12314,6 +12544,7 @@ export namespace Prisma {
     type?: SortOrder
     created_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type NotificationMinOrderByAggregateInput = {
@@ -12322,6 +12553,7 @@ export namespace Prisma {
     type?: SortOrder
     created_at?: SortOrder
     user_id?: SortOrder
+    deleted?: SortOrder
   }
 
   export type NotificationSumOrderByAggregateInput = {
@@ -12421,6 +12653,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
@@ -12595,10 +12831,6 @@ export namespace Prisma {
 
   export type EnumRoleNameFieldUpdateOperationsInput = {
     set?: $Enums.RoleName
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type UserUpdateManyWithoutRoleNestedInput = {
@@ -12855,6 +13087,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -12913,16 +13150,19 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedEnumRoleNameFilter<$PrismaModel = never> = {
     equals?: $Enums.RoleName | EnumRoleNameFieldRefInput<$PrismaModel>
     in?: $Enums.RoleName[] | ListEnumRoleNameFieldRefInput<$PrismaModel>
     notIn?: $Enums.RoleName[] | ListEnumRoleNameFieldRefInput<$PrismaModel>
     not?: NestedEnumRoleNameFilter<$PrismaModel> | $Enums.RoleName
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedEnumRoleNameWithAggregatesFilter<$PrismaModel = never> = {
@@ -12933,14 +13173,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleNameFilter<$PrismaModel>
     _max?: NestedEnumRoleNameFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -13008,6 +13240,7 @@ export namespace Prisma {
     settings: boolean
     reports: boolean
     billing: boolean
+    deleted?: boolean
   }
 
   export type RoleUncheckedCreateWithoutUsersInput = {
@@ -13017,6 +13250,7 @@ export namespace Prisma {
     settings: boolean
     reports: boolean
     billing: boolean
+    deleted?: boolean
   }
 
   export type RoleCreateOrConnectWithoutUsersInput = {
@@ -13029,6 +13263,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
     expenseType: ExpenseTypeCreateNestedOneWithoutExpensesInput
   }
 
@@ -13039,6 +13274,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
   }
 
   export type ExpenseCreateOrConnectWithoutUserInput = {
@@ -13056,6 +13292,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
     incomeType: IncomeTypeCreateNestedOneWithoutIncomeInput
   }
 
@@ -13066,6 +13303,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
   }
 
   export type IncomeCreateOrConnectWithoutUserInput = {
@@ -13082,6 +13320,7 @@ export namespace Prisma {
     description?: string | null
     amount: number
     created_at?: Date | string
+    deleted?: boolean
     recipient: UserCreateNestedOneWithoutReceivedTransfersInput
   }
 
@@ -13091,6 +13330,7 @@ export namespace Prisma {
     recipient_id: number
     amount: number
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type TransferCreateOrConnectWithoutSenderInput = {
@@ -13107,6 +13347,7 @@ export namespace Prisma {
     description?: string | null
     amount: number
     created_at?: Date | string
+    deleted?: boolean
     sender: UserCreateNestedOneWithoutSentTransfersInput
   }
 
@@ -13116,6 +13357,7 @@ export namespace Prisma {
     sender_id: number
     amount: number
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type TransferCreateOrConnectWithoutRecipientInput = {
@@ -13132,6 +13374,7 @@ export namespace Prisma {
     description?: string | null
     type: $Enums.NotificationTypes
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type NotificationUncheckedCreateWithoutUserInput = {
@@ -13139,6 +13382,7 @@ export namespace Prisma {
     description?: string | null
     type: $Enums.NotificationTypes
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type NotificationCreateOrConnectWithoutUserInput = {
@@ -13168,6 +13412,7 @@ export namespace Prisma {
     settings?: BoolFieldUpdateOperationsInput | boolean
     reports?: BoolFieldUpdateOperationsInput | boolean
     billing?: BoolFieldUpdateOperationsInput | boolean
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RoleUncheckedUpdateWithoutUsersInput = {
@@ -13177,6 +13422,7 @@ export namespace Prisma {
     settings?: BoolFieldUpdateOperationsInput | boolean
     reports?: BoolFieldUpdateOperationsInput | boolean
     billing?: BoolFieldUpdateOperationsInput | boolean
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseUpsertWithWhereUniqueWithoutUserInput = {
@@ -13206,6 +13452,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Expense"> | Date | string
     updated_at?: DateTimeFilter<"Expense"> | Date | string
     user_id?: IntFilter<"Expense"> | number
+    deleted?: BoolFilter<"Expense"> | boolean
   }
 
   export type IncomeUpsertWithWhereUniqueWithoutUserInput = {
@@ -13235,6 +13482,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Income"> | Date | string
     updated_at?: DateTimeFilter<"Income"> | Date | string
     user_id?: IntFilter<"Income"> | number
+    deleted?: BoolFilter<"Income"> | boolean
   }
 
   export type TransferUpsertWithWhereUniqueWithoutSenderInput = {
@@ -13263,6 +13511,7 @@ export namespace Prisma {
     recipient_id?: IntFilter<"Transfer"> | number
     amount?: IntFilter<"Transfer"> | number
     created_at?: DateTimeFilter<"Transfer"> | Date | string
+    deleted?: BoolFilter<"Transfer"> | boolean
   }
 
   export type TransferUpsertWithWhereUniqueWithoutRecipientInput = {
@@ -13306,12 +13555,14 @@ export namespace Prisma {
     type?: EnumNotificationTypesFilter<"Notification"> | $Enums.NotificationTypes
     created_at?: DateTimeFilter<"Notification"> | Date | string
     user_id?: IntFilter<"Notification"> | number
+    deleted?: BoolFilter<"Notification"> | boolean
   }
 
   export type UserCreateWithoutRoleInput = {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     expenses?: ExpenseCreateNestedManyWithoutUserInput
     income?: IncomeCreateNestedManyWithoutUserInput
     sentTransfers?: TransferCreateNestedManyWithoutSenderInput
@@ -13324,6 +13575,7 @@ export namespace Prisma {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
     income?: IncomeUncheckedCreateNestedManyWithoutUserInput
     sentTransfers?: TransferUncheckedCreateNestedManyWithoutSenderInput
@@ -13366,15 +13618,18 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     created_at?: DateTimeFilter<"User"> | Date | string
     role_id?: IntFilter<"User"> | number
+    deleted?: BoolFilter<"User"> | boolean
   }
 
   export type ExpenseTypeCreateWithoutExpensesInput = {
     name: string
+    deleted?: boolean
   }
 
   export type ExpenseTypeUncheckedCreateWithoutExpensesInput = {
     id?: number
     name: string
+    deleted?: boolean
   }
 
   export type ExpenseTypeCreateOrConnectWithoutExpensesInput = {
@@ -13386,6 +13641,7 @@ export namespace Prisma {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     role: RoleCreateNestedOneWithoutUsersInput
     income?: IncomeCreateNestedManyWithoutUserInput
     sentTransfers?: TransferCreateNestedManyWithoutSenderInput
@@ -13399,6 +13655,7 @@ export namespace Prisma {
     password: string
     created_at?: Date | string
     role_id: number
+    deleted?: boolean
     income?: IncomeUncheckedCreateNestedManyWithoutUserInput
     sentTransfers?: TransferUncheckedCreateNestedManyWithoutSenderInput
     receivedTransfers?: TransferUncheckedCreateNestedManyWithoutRecipientInput
@@ -13423,11 +13680,13 @@ export namespace Prisma {
 
   export type ExpenseTypeUpdateWithoutExpensesInput = {
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseTypeUncheckedUpdateWithoutExpensesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUpsertWithoutExpensesInput = {
@@ -13445,6 +13704,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     income?: IncomeUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUpdateManyWithoutSenderNestedInput
@@ -13458,6 +13718,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     income?: IncomeUncheckedUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUncheckedUpdateManyWithoutSenderNestedInput
     receivedTransfers?: TransferUncheckedUpdateManyWithoutRecipientNestedInput
@@ -13466,11 +13727,13 @@ export namespace Prisma {
 
   export type IncomeTypeCreateWithoutIncomeInput = {
     name: string
+    deleted?: boolean
   }
 
   export type IncomeTypeUncheckedCreateWithoutIncomeInput = {
     id?: number
     name: string
+    deleted?: boolean
   }
 
   export type IncomeTypeCreateOrConnectWithoutIncomeInput = {
@@ -13482,6 +13745,7 @@ export namespace Prisma {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     role: RoleCreateNestedOneWithoutUsersInput
     expenses?: ExpenseCreateNestedManyWithoutUserInput
     sentTransfers?: TransferCreateNestedManyWithoutSenderInput
@@ -13495,6 +13759,7 @@ export namespace Prisma {
     password: string
     created_at?: Date | string
     role_id: number
+    deleted?: boolean
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
     sentTransfers?: TransferUncheckedCreateNestedManyWithoutSenderInput
     receivedTransfers?: TransferUncheckedCreateNestedManyWithoutRecipientInput
@@ -13519,11 +13784,13 @@ export namespace Prisma {
 
   export type IncomeTypeUpdateWithoutIncomeInput = {
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeTypeUncheckedUpdateWithoutIncomeInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUpsertWithoutIncomeInput = {
@@ -13541,6 +13808,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUpdateManyWithoutSenderNestedInput
@@ -13554,6 +13822,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUncheckedUpdateManyWithoutSenderNestedInput
     receivedTransfers?: TransferUncheckedUpdateManyWithoutRecipientNestedInput
@@ -13565,6 +13834,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
     user: UserCreateNestedOneWithoutExpensesInput
   }
 
@@ -13575,6 +13845,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type ExpenseCreateOrConnectWithoutExpenseTypeInput = {
@@ -13608,6 +13879,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
     user: UserCreateNestedOneWithoutIncomeInput
   }
 
@@ -13618,6 +13890,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type IncomeCreateOrConnectWithoutIncomeTypeInput = {
@@ -13650,6 +13923,7 @@ export namespace Prisma {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     role: RoleCreateNestedOneWithoutUsersInput
     expenses?: ExpenseCreateNestedManyWithoutUserInput
     income?: IncomeCreateNestedManyWithoutUserInput
@@ -13663,6 +13937,7 @@ export namespace Prisma {
     password: string
     created_at?: Date | string
     role_id: number
+    deleted?: boolean
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
     income?: IncomeUncheckedCreateNestedManyWithoutUserInput
     receivedTransfers?: TransferUncheckedCreateNestedManyWithoutRecipientInput
@@ -13678,6 +13953,7 @@ export namespace Prisma {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     role: RoleCreateNestedOneWithoutUsersInput
     expenses?: ExpenseCreateNestedManyWithoutUserInput
     income?: IncomeCreateNestedManyWithoutUserInput
@@ -13691,6 +13967,7 @@ export namespace Prisma {
     password: string
     created_at?: Date | string
     role_id: number
+    deleted?: boolean
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
     income?: IncomeUncheckedCreateNestedManyWithoutUserInput
     sentTransfers?: TransferUncheckedCreateNestedManyWithoutSenderInput
@@ -13717,6 +13994,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
     income?: IncomeUpdateManyWithoutUserNestedInput
@@ -13730,6 +14008,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
     income?: IncomeUncheckedUpdateManyWithoutUserNestedInput
     receivedTransfers?: TransferUncheckedUpdateManyWithoutRecipientNestedInput
@@ -13751,6 +14030,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
     income?: IncomeUpdateManyWithoutUserNestedInput
@@ -13764,6 +14044,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
     income?: IncomeUncheckedUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUncheckedUpdateManyWithoutSenderNestedInput
@@ -13774,6 +14055,7 @@ export namespace Prisma {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
     role: RoleCreateNestedOneWithoutUsersInput
     expenses?: ExpenseCreateNestedManyWithoutUserInput
     income?: IncomeCreateNestedManyWithoutUserInput
@@ -13787,6 +14069,7 @@ export namespace Prisma {
     password: string
     created_at?: Date | string
     role_id: number
+    deleted?: boolean
     expenses?: ExpenseUncheckedCreateNestedManyWithoutUserInput
     income?: IncomeUncheckedCreateNestedManyWithoutUserInput
     sentTransfers?: TransferUncheckedCreateNestedManyWithoutSenderInput
@@ -13813,6 +14096,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
     income?: IncomeUpdateManyWithoutUserNestedInput
@@ -13826,6 +14110,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
     income?: IncomeUncheckedUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUncheckedUpdateManyWithoutSenderNestedInput
@@ -13839,6 +14124,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
   }
 
   export type IncomeCreateManyUserInput = {
@@ -13848,6 +14134,7 @@ export namespace Prisma {
     amount: string
     created_at?: Date | string
     updated_at?: Date | string
+    deleted?: boolean
   }
 
   export type TransferCreateManySenderInput = {
@@ -13856,6 +14143,7 @@ export namespace Prisma {
     recipient_id: number
     amount: number
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type TransferCreateManyRecipientInput = {
@@ -13864,6 +14152,7 @@ export namespace Prisma {
     sender_id: number
     amount: number
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type NotificationCreateManyUserInput = {
@@ -13871,6 +14160,7 @@ export namespace Prisma {
     description?: string | null
     type: $Enums.NotificationTypes
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type ExpenseUpdateWithoutUserInput = {
@@ -13878,6 +14168,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenseType?: ExpenseTypeUpdateOneRequiredWithoutExpensesNestedInput
   }
 
@@ -13888,6 +14179,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseUncheckedUpdateManyWithoutUserInput = {
@@ -13897,6 +14189,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeUpdateWithoutUserInput = {
@@ -13904,6 +14197,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     incomeType?: IncomeTypeUpdateOneRequiredWithoutIncomeNestedInput
   }
 
@@ -13914,6 +14208,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeUncheckedUpdateManyWithoutUserInput = {
@@ -13923,12 +14218,14 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferUpdateWithoutSenderInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     recipient?: UserUpdateOneRequiredWithoutReceivedTransfersNestedInput
   }
 
@@ -13938,6 +14235,7 @@ export namespace Prisma {
     recipient_id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferUncheckedUpdateManyWithoutSenderInput = {
@@ -13946,12 +14244,14 @@ export namespace Prisma {
     recipient_id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferUpdateWithoutRecipientInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     sender?: UserUpdateOneRequiredWithoutSentTransfersNestedInput
   }
 
@@ -13961,6 +14261,7 @@ export namespace Prisma {
     sender_id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferUncheckedUpdateManyWithoutRecipientInput = {
@@ -13969,12 +14270,14 @@ export namespace Prisma {
     sender_id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type NotificationUpdateWithoutUserInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypesFieldUpdateOperationsInput | $Enums.NotificationTypes
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type NotificationUncheckedUpdateWithoutUserInput = {
@@ -13982,6 +14285,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypesFieldUpdateOperationsInput | $Enums.NotificationTypes
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type NotificationUncheckedUpdateManyWithoutUserInput = {
@@ -13989,6 +14293,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypesFieldUpdateOperationsInput | $Enums.NotificationTypes
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserCreateManyRoleInput = {
@@ -13996,12 +14301,14 @@ export namespace Prisma {
     email: string
     password: string
     created_at?: Date | string
+    deleted?: boolean
   }
 
   export type UserUpdateWithoutRoleInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUpdateManyWithoutUserNestedInput
     income?: IncomeUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUpdateManyWithoutSenderNestedInput
@@ -14014,6 +14321,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     expenses?: ExpenseUncheckedUpdateManyWithoutUserNestedInput
     income?: IncomeUncheckedUpdateManyWithoutUserNestedInput
     sentTransfers?: TransferUncheckedUpdateManyWithoutSenderNestedInput
@@ -14026,6 +14334,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseCreateManyExpenseTypeInput = {
@@ -14035,6 +14344,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type ExpenseUpdateWithoutExpenseTypeInput = {
@@ -14042,6 +14352,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutExpensesNestedInput
   }
 
@@ -14052,6 +14363,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExpenseUncheckedUpdateManyWithoutExpenseTypeInput = {
@@ -14061,6 +14373,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeCreateManyIncomeTypeInput = {
@@ -14070,6 +14383,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
+    deleted?: boolean
   }
 
   export type IncomeUpdateWithoutIncomeTypeInput = {
@@ -14077,6 +14391,7 @@ export namespace Prisma {
     amount?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutIncomeNestedInput
   }
 
@@ -14087,6 +14402,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IncomeUncheckedUpdateManyWithoutIncomeTypeInput = {
@@ -14096,6 +14412,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
 

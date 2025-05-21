@@ -125,7 +125,8 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   created_at: 'created_at',
-  role_id: 'role_id'
+  role_id: 'role_id',
+  deleted: 'deleted'
 };
 
 exports.Prisma.RoleScalarFieldEnum = {
@@ -134,7 +135,8 @@ exports.Prisma.RoleScalarFieldEnum = {
   dashboard: 'dashboard',
   settings: 'settings',
   reports: 'reports',
-  billing: 'billing'
+  billing: 'billing',
+  deleted: 'deleted'
 };
 
 exports.Prisma.ExpenseScalarFieldEnum = {
@@ -144,7 +146,8 @@ exports.Prisma.ExpenseScalarFieldEnum = {
   amount: 'amount',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  user_id: 'user_id'
+  user_id: 'user_id',
+  deleted: 'deleted'
 };
 
 exports.Prisma.IncomeScalarFieldEnum = {
@@ -154,17 +157,20 @@ exports.Prisma.IncomeScalarFieldEnum = {
   amount: 'amount',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  user_id: 'user_id'
+  user_id: 'user_id',
+  deleted: 'deleted'
 };
 
 exports.Prisma.ExpenseTypeScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  deleted: 'deleted'
 };
 
 exports.Prisma.IncomeTypeScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  deleted: 'deleted'
 };
 
 exports.Prisma.TransferScalarFieldEnum = {
@@ -173,7 +179,8 @@ exports.Prisma.TransferScalarFieldEnum = {
   sender_id: 'sender_id',
   recipient_id: 'recipient_id',
   amount: 'amount',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  deleted: 'deleted'
 };
 
 exports.Prisma.NotificationScalarFieldEnum = {
@@ -181,7 +188,8 @@ exports.Prisma.NotificationScalarFieldEnum = {
   description: 'description',
   type: 'type',
   created_at: 'created_at',
-  user_id: 'user_id'
+  user_id: 'user_id',
+  deleted: 'deleted'
 };
 
 exports.Prisma.SortOrder = {

@@ -40,6 +40,7 @@ model User {
   sentTransfers Transfer[]     @relation("SentTransfers")
   receivedTransfers Transfer[] @relation("ReceivedTransfers")
   notifications Notification[]
+  deleted       Boolean @default(false)
 
   @@map("users")
 }
@@ -52,6 +53,7 @@ model Role {
   reports   Boolean
   billing   Boolean
   users     User[]
+  deleted       Boolean @default(false)
 
   @@map("roles")
 }
@@ -66,6 +68,7 @@ model Expense {
   user_id        Int
   expenseType    ExpenseType @relation(fields: [expense_type_id], references: [id])
   user           User       @relation(fields: [user_id], references: [id])
+  deleted       Boolean @default(false)
 
   @@map("expenses")
 }
@@ -80,6 +83,7 @@ model Income {
   user_id       Int
   incomeType    IncomeType @relation(fields: [income_type_id], references: [id])
   user          User       @relation(fields: [user_id], references: [id])
+  deleted       Boolean @default(false)
 
   @@map("income")
 }
@@ -88,6 +92,7 @@ model ExpenseType {
   id       Int       @id @default(autoincrement())
   name     String    @unique
   expenses Expense[]
+  deleted       Boolean @default(false)
 
   @@map("expense_type")
 }
@@ -96,6 +101,7 @@ model IncomeType {
   id     Int      @id @default(autoincrement())
   name   String   @unique
   income Income[]
+  deleted       Boolean @default(false)
 
   @@map("income_type")
 }
@@ -109,6 +115,7 @@ model Transfer {
   created_at  DateTime @default(now())
   sender      User     @relation("SentTransfers", fields: [sender_id], references: [id])
   recipient   User     @relation("ReceivedTransfers", fields: [recipient_id], references: [id])
+  deleted       Boolean @default(false)
 
   @@map("transfers")
 }
@@ -120,6 +127,7 @@ model Notification {
   created_at  DateTime          @default(now())
   user_id     Int
   user        User              @relation(fields: [user_id], references: [id])
+  deleted       Boolean @default(false)
 
   @@map("notifications")
 }
