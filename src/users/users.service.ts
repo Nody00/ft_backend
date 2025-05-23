@@ -1,14 +1,55 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { Prisma, RoleName } from 'generated/prisma';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  create(createUserDto: Prisma.UserCreateInput) {
+  async createCustomer(createUserDto: CreateUserDto) {
+    const foundRole = await this.databaseService.role.findUnique({
+      where: { name: RoleName.CUSTOMER },
+    });
+
+    if (!foundRole) {
+      throw new HttpException('No role found!', HttpStatus.BAD_REQUEST);
+    }
+
+    const password = await bcrypt.hash(createUserDto.password, 12);
+
+    const customerObject = {
+      ...createUserDto,
+      password: password,
+      role_id: foundRole.id,
+    };
+
     return this.databaseService.user.create({
-      data: createUserDto,
+      data: customerObject,
+    });
+  }
+
+  async createAdmin(createUserDto: CreateUserDto) {
+    const foundRole = await this.databaseService.role.findUnique({
+      where: { name: RoleName.ADMIN },
+    });
+
+    if (!foundRole) {
+      throw new HttpException('No role found!', HttpStatus.BAD_REQUEST);
+    }
+
+    const password = await bcrypt.hash(createUserDto.password, 12);
+
+    const adminObject = {
+      ...createUserDto,
+      password: password,
+      role_id: foundRole.id,
+    };
+
+    return this.databaseService.user.create({
+      data: adminObject,
     });
   }
 
@@ -39,7 +80,7 @@ export class UsersService {
     });
   }
 
-  update(id: number, updateUserDto: Prisma.UserUpdateInput) {
+  update(id: number, updateUserDto: UpdateUserDto) {
     return this.databaseService.user.update({
       data: updateUserDto,
       where: { id, deleted: false },

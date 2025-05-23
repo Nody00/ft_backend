@@ -7,17 +7,25 @@ import {
   Param,
   Delete,
   Query,
+  ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { Prisma, RoleName } from 'generated/prisma';
+import { RoleName } from 'generated/prisma';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: Prisma.UserCreateInput) {
-    return this.usersService.create(createUserDto);
+  @Post('/create-customer')
+  createCustomer(@Body(ValidationPipe) createUserDto: CreateUserDto) {
+    return this.usersService.createCustomer(createUserDto);
+  }
+
+  @Post('/create-admin')
+  createAdmin(@Body(ValidationPipe) createUserDto: CreateUserDto) {
+    return this.usersService.createAdmin(createUserDto);
   }
 
   @Get()
@@ -31,10 +39,7 @@ export class UsersController {
   }
 
   @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateUserDto: Prisma.UserUpdateInput,
-  ) {
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
 
