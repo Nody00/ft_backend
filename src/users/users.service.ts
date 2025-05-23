@@ -74,7 +74,11 @@ export class UsersService {
       });
     }
 
-    return this.databaseService.user.findMany();
+    return this.databaseService.user.findMany({
+      omit: {
+        password: true,
+      },
+    });
   }
 
   findOne(id: number) {
