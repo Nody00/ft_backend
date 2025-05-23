@@ -50,20 +50,26 @@ export class UsersService {
 
     return this.databaseService.user.create({
       data: adminObject,
+      omit: {
+        password: true,
+      },
     });
   }
 
   async findAll(role?: RoleName) {
     if (role) {
       return this.databaseService.user.findMany({
+        omit: {
+          password: true,
+        },
+        include: {
+          role: true,
+        },
         where: {
           role: {
             name: role,
           },
           deleted: false,
-        },
-        omit: {
-          password: true,
         },
       });
     }
@@ -84,6 +90,7 @@ export class UsersService {
     return this.databaseService.user.update({
       data: updateUserDto,
       where: { id, deleted: false },
+      omit: { password: true },
     });
   }
 
@@ -93,6 +100,7 @@ export class UsersService {
         deleted: true,
       },
       where: { id },
+      omit: { password: true },
     });
   }
 }
