@@ -21,6 +21,9 @@ export class UsersService {
           },
           deleted: false,
         },
+        omit: {
+          password: true,
+        },
       });
     }
 
@@ -30,6 +33,9 @@ export class UsersService {
   findOne(id: number) {
     return this.databaseService.user.findUnique({
       where: { id, deleted: false },
+      omit: {
+        password: true,
+      },
     });
   }
 
