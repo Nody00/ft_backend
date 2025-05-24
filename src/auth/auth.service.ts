@@ -19,9 +19,15 @@ export class AuthService {
         email: loginDto.email,
       },
       include: {
-        role: true,
+        role: {
+          include: {
+            permissions: true,
+          },
+        },
       },
     });
+
+    console.log('dinov log foundUser', foundUser);
 
     if (!foundUser) {
       throw new HttpException(

@@ -9,6 +9,7 @@ import { RolesModule } from './roles/roles.module';
 import { TransfersModule } from './transfers/transfers.module';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
+import { PermissionsModule } from './permissions/permissions.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     TransfersModule,
     DatabaseModule,
     AuthModule,
+    PermissionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

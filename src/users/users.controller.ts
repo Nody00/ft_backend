@@ -15,39 +15,40 @@ import { RoleName } from 'generated/prisma';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
-import { Roles } from 'src/roles/roles.decorator';
-import { ROLE_ENUM } from 'src/roles/role.enum';
-import { RoleGuard } from 'src/roles/role.guard';
+import { PermissionsGuard } from 'src/permissions/permissions.guard';
+import { Permissions } from 'src/permissions/permissions.decorator';
 
-@UseGuards(...[AuthGuard, RoleGuard])
+@UseGuards(...[AuthGuard, PermissionsGuard])
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('/create-customer')
-  @Roles(ROLE_ENUM.ADMIN)
+  @Permissions('USER', 'CREATE')
   createCustomer(@Body(ValidationPipe) createUserDto: CreateUserDto) {
     return this.usersService.createCustomer(createUserDto);
   }
 
   @Post('/create-admin')
-  @Roles(ROLE_ENUM.ADMIN)
+  @Permissions('USER', 'CREATE')
   createAdmin(@Body(ValidationPipe) createUserDto: CreateUserDto) {
     return this.usersService.createAdmin(createUserDto);
   }
 
   @Get()
-  @Roles(ROLE_ENUM.ADMIN)
+  @Permissions('USER', 'READ')
   findAll(@Query('role') role?: RoleName) {
     return this.usersService.findAll(role);
   }
 
   @Get(':id')
+  @Permissions('USER', 'READ')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);
   }
 
   @Patch(':id')
+  @Permissions('USER', 'UPDATE')
   update(
     @Param('id') id: string,
     @Body(ValidationPipe) updateUserDto: UpdateUserDto,
@@ -56,6 +57,7 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @Permissions('USER', 'DELETE')
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }
