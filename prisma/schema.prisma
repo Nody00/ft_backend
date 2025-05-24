@@ -28,6 +28,24 @@ enum NotificationTypes {
   TRANSFER_FAIL
 }
 
+enum Action {
+  READ
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum Resource {
+  USER
+  PERMISSION
+  INCOME
+  EXPENSE
+  TRANSFER
+  EXPENSE_TYPE
+  INCOME_TYPE
+  NOTIFICATION
+}
+
 model User {
   id            Int            @id @default(autoincrement())
   email         String         @unique
@@ -48,14 +66,22 @@ model User {
 model Role {
   id        Int      @id @default(autoincrement())
   name      RoleName @unique
-  dashboard Boolean
-  settings  Boolean
-  reports   Boolean
-  billing   Boolean
+  permissions Permissions[]
   users     User[]
   deleted       Boolean @default(false)
 
   @@map("roles")
+}
+
+model Permissions {
+  id Int @id @default(autoincrement())
+  roleId Int
+  role Role @relation(fields:[roleId],references: [id])
+  resource Resource
+  actions Action[]
+
+  @@unique([roleId,resource])
+  @@map("permissions")
 }
 
 model Expense {

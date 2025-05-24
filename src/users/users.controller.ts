@@ -15,23 +15,29 @@ import { RoleName } from 'generated/prisma';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { Roles } from 'src/roles/roles.decorator';
+import { ROLE_ENUM } from 'src/roles/role.enum';
+import { RoleGuard } from 'src/roles/role.guard';
 
-@UseGuards(AuthGuard)
+@UseGuards(...[AuthGuard, RoleGuard])
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('/create-customer')
+  @Roles(ROLE_ENUM.ADMIN)
   createCustomer(@Body(ValidationPipe) createUserDto: CreateUserDto) {
     return this.usersService.createCustomer(createUserDto);
   }
 
   @Post('/create-admin')
+  @Roles(ROLE_ENUM.ADMIN)
   createAdmin(@Body(ValidationPipe) createUserDto: CreateUserDto) {
     return this.usersService.createAdmin(createUserDto);
   }
 
   @Get()
+  @Roles(ROLE_ENUM.ADMIN)
   findAll(@Query('role') role?: RoleName) {
     return this.usersService.findAll(role);
   }

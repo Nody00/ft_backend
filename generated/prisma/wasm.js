@@ -132,11 +132,14 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.RoleScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  dashboard: 'dashboard',
-  settings: 'settings',
-  reports: 'reports',
-  billing: 'billing',
   deleted: 'deleted'
+};
+
+exports.Prisma.PermissionsScalarFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  resource: 'resource',
+  actions: 'actions'
 };
 
 exports.Prisma.ExpenseScalarFieldEnum = {
@@ -211,6 +214,24 @@ exports.RoleName = exports.$Enums.RoleName = {
   CUSTOMER: 'CUSTOMER'
 };
 
+exports.Resource = exports.$Enums.Resource = {
+  USER: 'USER',
+  PERMISSION: 'PERMISSION',
+  INCOME: 'INCOME',
+  EXPENSE: 'EXPENSE',
+  TRANSFER: 'TRANSFER',
+  EXPENSE_TYPE: 'EXPENSE_TYPE',
+  INCOME_TYPE: 'INCOME_TYPE',
+  NOTIFICATION: 'NOTIFICATION'
+};
+
+exports.Action = exports.$Enums.Action = {
+  READ: 'READ',
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE'
+};
+
 exports.NotificationTypes = exports.$Enums.NotificationTypes = {
   NEW_USER: 'NEW_USER',
   NEW_EXPENSE: 'NEW_EXPENSE',
@@ -223,6 +244,7 @@ exports.NotificationTypes = exports.$Enums.NotificationTypes = {
 exports.Prisma.ModelName = {
   User: 'User',
   Role: 'Role',
+  Permissions: 'Permissions',
   Expense: 'Expense',
   Income: 'Income',
   ExpenseType: 'ExpenseType',
