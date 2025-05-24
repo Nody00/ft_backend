@@ -4,6 +4,8 @@ import { Prisma, RoleName } from 'generated/prisma';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
+import { Request } from 'express';
+import { UpdateNotificationDto } from 'src/notifications/dto/update-notification.dto';
 
 @Injectable()
 export class UsersService {
@@ -90,7 +92,15 @@ export class UsersService {
     });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(id: number, updateUserDto: UpdateUserDto, request: Request) {
+    const user = (request as any).user;
+
+    console.log('dinov log user', user);
+
+    if (id !== user.id && user.role.name !== 'ADMIN') {
+      throw new UpdateNotificationDto('Cannot update user');
+    }
+
     return this.databaseService.user.update({
       data: updateUserDto,
       where: { id, deleted: false },

@@ -9,6 +9,7 @@ import {
   Query,
   ValidationPipe,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { RoleName } from 'generated/prisma';
@@ -17,6 +18,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { PermissionsGuard } from 'src/permissions/permissions.guard';
 import { Permissions } from 'src/permissions/permissions.decorator';
+import { Request } from 'express';
 
 @UseGuards(...[AuthGuard, PermissionsGuard])
 @Controller('users')
@@ -52,8 +54,9 @@ export class UsersController {
   update(
     @Param('id') id: string,
     @Body(ValidationPipe) updateUserDto: UpdateUserDto,
+    @Req() request: Request,
   ) {
-    return this.usersService.update(+id, updateUserDto);
+    return this.usersService.update(+id, updateUserDto, request);
   }
 
   @Delete(':id')
