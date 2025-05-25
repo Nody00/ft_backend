@@ -3,22 +3,18 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Query,
   ValidationPipe,
   UseGuards,
-  Req,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { RoleName } from 'generated/prisma';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { PermissionsGuard } from 'src/permissions/permissions.guard';
 import { Permissions } from 'src/permissions/permissions.decorator';
-import { Request } from 'express';
 
 @UseGuards(...[AuthGuard, PermissionsGuard])
 @Controller('users')
@@ -49,15 +45,15 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
-  @Patch(':id')
-  @Permissions('USER', 'UPDATE')
-  update(
-    @Param('id') id: string,
-    @Body(ValidationPipe) updateUserDto: UpdateUserDto,
-    @Req() request: Request,
-  ) {
-    return this.usersService.update(+id, updateUserDto, request);
-  }
+  // @Patch(':id')
+  // @Permissions('USER', 'UPDATE')
+  // update(
+  //   @Param('id') id: string,
+  //   @Body(ValidationPipe) updateUserDto: UpdateUserDto,
+  //   @Req() request: Request,
+  // ) {
+  //   return this.usersService.update(+id, updateUserDto, request);
+  // }
 
   @Delete(':id')
   @Permissions('USER', 'DELETE')
