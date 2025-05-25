@@ -95,10 +95,11 @@ export class UsersService {
   update(id: number, updateUserDto: UpdateUserDto, request: Request) {
     const user = (request as any).user;
 
-    console.log('dinov log user', user);
-
     if (id !== user.id && user.role.name !== 'ADMIN') {
-      throw new UpdateNotificationDto('Cannot update user');
+      throw new HttpException(
+        'Insufficient permissions!',
+        HttpStatus.UNAUTHORIZED,
+      );
     }
 
     return this.databaseService.user.update({

@@ -5281,12 +5281,14 @@ export namespace Prisma {
   export type ExpenseAvgAggregateOutputType = {
     id: number | null
     expense_type_id: number | null
+    amount: number | null
     user_id: number | null
   }
 
   export type ExpenseSumAggregateOutputType = {
     id: number | null
     expense_type_id: number | null
+    amount: number | null
     user_id: number | null
   }
 
@@ -5294,7 +5296,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     expense_type_id: number | null
-    amount: string | null
+    amount: number | null
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
@@ -5305,7 +5307,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     expense_type_id: number | null
-    amount: string | null
+    amount: number | null
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
@@ -5328,12 +5330,14 @@ export namespace Prisma {
   export type ExpenseAvgAggregateInputType = {
     id?: true
     expense_type_id?: true
+    amount?: true
     user_id?: true
   }
 
   export type ExpenseSumAggregateInputType = {
     id?: true
     expense_type_id?: true
+    amount?: true
     user_id?: true
   }
 
@@ -5461,7 +5465,7 @@ export namespace Prisma {
     id: number
     name: string
     expense_type_id: number
-    amount: string
+    amount: number
     created_at: Date
     updated_at: Date
     user_id: number
@@ -5561,7 +5565,7 @@ export namespace Prisma {
       id: number
       name: string
       expense_type_id: number
-      amount: string
+      amount: number
       created_at: Date
       updated_at: Date
       user_id: number
@@ -5994,7 +5998,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Expense", 'Int'>
     readonly name: FieldRef<"Expense", 'String'>
     readonly expense_type_id: FieldRef<"Expense", 'Int'>
-    readonly amount: FieldRef<"Expense", 'String'>
+    readonly amount: FieldRef<"Expense", 'Float'>
     readonly created_at: FieldRef<"Expense", 'DateTime'>
     readonly updated_at: FieldRef<"Expense", 'DateTime'>
     readonly user_id: FieldRef<"Expense", 'Int'>
@@ -6428,12 +6432,14 @@ export namespace Prisma {
   export type IncomeAvgAggregateOutputType = {
     id: number | null
     income_type_id: number | null
+    amount: number | null
     user_id: number | null
   }
 
   export type IncomeSumAggregateOutputType = {
     id: number | null
     income_type_id: number | null
+    amount: number | null
     user_id: number | null
   }
 
@@ -6441,7 +6447,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     income_type_id: number | null
-    amount: string | null
+    amount: number | null
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
@@ -6452,7 +6458,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     income_type_id: number | null
-    amount: string | null
+    amount: number | null
     created_at: Date | null
     updated_at: Date | null
     user_id: number | null
@@ -6475,12 +6481,14 @@ export namespace Prisma {
   export type IncomeAvgAggregateInputType = {
     id?: true
     income_type_id?: true
+    amount?: true
     user_id?: true
   }
 
   export type IncomeSumAggregateInputType = {
     id?: true
     income_type_id?: true
+    amount?: true
     user_id?: true
   }
 
@@ -6608,7 +6616,7 @@ export namespace Prisma {
     id: number
     name: string
     income_type_id: number
-    amount: string
+    amount: number
     created_at: Date
     updated_at: Date
     user_id: number
@@ -6708,7 +6716,7 @@ export namespace Prisma {
       id: number
       name: string
       income_type_id: number
-      amount: string
+      amount: number
       created_at: Date
       updated_at: Date
       user_id: number
@@ -7141,7 +7149,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Income", 'Int'>
     readonly name: FieldRef<"Income", 'String'>
     readonly income_type_id: FieldRef<"Income", 'Int'>
-    readonly amount: FieldRef<"Income", 'String'>
+    readonly amount: FieldRef<"Income", 'Float'>
     readonly created_at: FieldRef<"Income", 'DateTime'>
     readonly updated_at: FieldRef<"Income", 'DateTime'>
     readonly user_id: FieldRef<"Income", 'Int'>
@@ -10437,7 +10445,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Transfer", 'String'>
     readonly sender_id: FieldRef<"Transfer", 'Int'>
     readonly recipient_id: FieldRef<"Transfer", 'Int'>
-    readonly amount: FieldRef<"Transfer", 'Int'>
+    readonly amount: FieldRef<"Transfer", 'Float'>
     readonly created_at: FieldRef<"Transfer", 'DateTime'>
     readonly deleted: FieldRef<"Transfer", 'Boolean'>
   }
@@ -12200,20 +12208,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'NotificationTypes'
-   */
-  export type EnumNotificationTypesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationTypes'>
-    
-
-
-  /**
-   * Reference to a field of type 'NotificationTypes[]'
-   */
-  export type ListEnumNotificationTypesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationTypes[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -12224,6 +12218,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationTypes'
+   */
+  export type EnumNotificationTypesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationTypes'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationTypes[]'
+   */
+  export type ListEnumNotificationTypesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationTypes[]'>
     
   /**
    * Deep Input Types
@@ -12417,7 +12425,7 @@ export namespace Prisma {
     id?: IntFilter<"Expense"> | number
     name?: StringFilter<"Expense"> | string
     expense_type_id?: IntFilter<"Expense"> | number
-    amount?: StringFilter<"Expense"> | string
+    amount?: FloatFilter<"Expense"> | number
     created_at?: DateTimeFilter<"Expense"> | Date | string
     updated_at?: DateTimeFilter<"Expense"> | Date | string
     user_id?: IntFilter<"Expense"> | number
@@ -12446,7 +12454,7 @@ export namespace Prisma {
     NOT?: ExpenseWhereInput | ExpenseWhereInput[]
     name?: StringFilter<"Expense"> | string
     expense_type_id?: IntFilter<"Expense"> | number
-    amount?: StringFilter<"Expense"> | string
+    amount?: FloatFilter<"Expense"> | number
     created_at?: DateTimeFilter<"Expense"> | Date | string
     updated_at?: DateTimeFilter<"Expense"> | Date | string
     user_id?: IntFilter<"Expense"> | number
@@ -12478,7 +12486,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Expense"> | number
     name?: StringWithAggregatesFilter<"Expense"> | string
     expense_type_id?: IntWithAggregatesFilter<"Expense"> | number
-    amount?: StringWithAggregatesFilter<"Expense"> | string
+    amount?: FloatWithAggregatesFilter<"Expense"> | number
     created_at?: DateTimeWithAggregatesFilter<"Expense"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Expense"> | Date | string
     user_id?: IntWithAggregatesFilter<"Expense"> | number
@@ -12492,7 +12500,7 @@ export namespace Prisma {
     id?: IntFilter<"Income"> | number
     name?: StringFilter<"Income"> | string
     income_type_id?: IntFilter<"Income"> | number
-    amount?: StringFilter<"Income"> | string
+    amount?: FloatFilter<"Income"> | number
     created_at?: DateTimeFilter<"Income"> | Date | string
     updated_at?: DateTimeFilter<"Income"> | Date | string
     user_id?: IntFilter<"Income"> | number
@@ -12521,7 +12529,7 @@ export namespace Prisma {
     NOT?: IncomeWhereInput | IncomeWhereInput[]
     name?: StringFilter<"Income"> | string
     income_type_id?: IntFilter<"Income"> | number
-    amount?: StringFilter<"Income"> | string
+    amount?: FloatFilter<"Income"> | number
     created_at?: DateTimeFilter<"Income"> | Date | string
     updated_at?: DateTimeFilter<"Income"> | Date | string
     user_id?: IntFilter<"Income"> | number
@@ -12553,7 +12561,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Income"> | number
     name?: StringWithAggregatesFilter<"Income"> | string
     income_type_id?: IntWithAggregatesFilter<"Income"> | number
-    amount?: StringWithAggregatesFilter<"Income"> | string
+    amount?: FloatWithAggregatesFilter<"Income"> | number
     created_at?: DateTimeWithAggregatesFilter<"Income"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Income"> | Date | string
     user_id?: IntWithAggregatesFilter<"Income"> | number
@@ -12662,7 +12670,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Transfer"> | string | null
     sender_id?: IntFilter<"Transfer"> | number
     recipient_id?: IntFilter<"Transfer"> | number
-    amount?: IntFilter<"Transfer"> | number
+    amount?: FloatFilter<"Transfer"> | number
     created_at?: DateTimeFilter<"Transfer"> | Date | string
     deleted?: BoolFilter<"Transfer"> | boolean
     sender?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -12689,7 +12697,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Transfer"> | string | null
     sender_id?: IntFilter<"Transfer"> | number
     recipient_id?: IntFilter<"Transfer"> | number
-    amount?: IntFilter<"Transfer"> | number
+    amount?: FloatFilter<"Transfer"> | number
     created_at?: DateTimeFilter<"Transfer"> | Date | string
     deleted?: BoolFilter<"Transfer"> | boolean
     sender?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -12719,7 +12727,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Transfer"> | string | null
     sender_id?: IntWithAggregatesFilter<"Transfer"> | number
     recipient_id?: IntWithAggregatesFilter<"Transfer"> | number
-    amount?: IntWithAggregatesFilter<"Transfer"> | number
+    amount?: FloatWithAggregatesFilter<"Transfer"> | number
     created_at?: DateTimeWithAggregatesFilter<"Transfer"> | Date | string
     deleted?: BoolWithAggregatesFilter<"Transfer"> | boolean
   }
@@ -12959,7 +12967,7 @@ export namespace Prisma {
 
   export type ExpenseCreateInput = {
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -12971,7 +12979,7 @@ export namespace Prisma {
     id?: number
     name: string
     expense_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -12980,7 +12988,7 @@ export namespace Prisma {
 
   export type ExpenseUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -12992,7 +13000,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     expense_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
@@ -13003,7 +13011,7 @@ export namespace Prisma {
     id?: number
     name: string
     expense_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -13012,7 +13020,7 @@ export namespace Prisma {
 
   export type ExpenseUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -13022,7 +13030,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     expense_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
@@ -13031,7 +13039,7 @@ export namespace Prisma {
 
   export type IncomeCreateInput = {
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -13043,7 +13051,7 @@ export namespace Prisma {
     id?: number
     name: string
     income_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -13052,7 +13060,7 @@ export namespace Prisma {
 
   export type IncomeUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -13064,7 +13072,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     income_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
@@ -13075,7 +13083,7 @@ export namespace Prisma {
     id?: number
     name: string
     income_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -13084,7 +13092,7 @@ export namespace Prisma {
 
   export type IncomeUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -13094,7 +13102,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     income_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
@@ -13208,7 +13216,7 @@ export namespace Prisma {
 
   export type TransferUpdateInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     sender?: UserUpdateOneRequiredWithoutSentTransfersNestedInput
@@ -13220,7 +13228,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     sender_id?: IntFieldUpdateOperationsInput | number
     recipient_id?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -13237,7 +13245,7 @@ export namespace Prisma {
 
   export type TransferUpdateManyMutationInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -13247,7 +13255,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     sender_id?: IntFieldUpdateOperationsInput | number
     recipient_id?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -13613,6 +13621,17 @@ export namespace Prisma {
     _max?: NestedEnumResourceFilter<$PrismaModel>
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type ExpenseTypeScalarRelationFilter = {
     is?: ExpenseTypeWhereInput
     isNot?: ExpenseTypeWhereInput
@@ -13637,6 +13656,7 @@ export namespace Prisma {
   export type ExpenseAvgOrderByAggregateInput = {
     id?: SortOrder
     expense_type_id?: SortOrder
+    amount?: SortOrder
     user_id?: SortOrder
   }
 
@@ -13665,7 +13685,24 @@ export namespace Prisma {
   export type ExpenseSumOrderByAggregateInput = {
     id?: SortOrder
     expense_type_id?: SortOrder
+    amount?: SortOrder
     user_id?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type IncomeTypeScalarRelationFilter = {
@@ -13687,6 +13724,7 @@ export namespace Prisma {
   export type IncomeAvgOrderByAggregateInput = {
     id?: SortOrder
     income_type_id?: SortOrder
+    amount?: SortOrder
     user_id?: SortOrder
   }
 
@@ -13715,6 +13753,7 @@ export namespace Prisma {
   export type IncomeSumOrderByAggregateInput = {
     id?: SortOrder
     income_type_id?: SortOrder
+    amount?: SortOrder
     user_id?: SortOrder
   }
 
@@ -14277,6 +14316,14 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type ExpenseTypeUpdateOneRequiredWithoutExpensesNestedInput = {
     create?: XOR<ExpenseTypeCreateWithoutExpensesInput, ExpenseTypeUncheckedCreateWithoutExpensesInput>
     connectOrCreate?: ExpenseTypeCreateOrConnectWithoutExpensesInput
@@ -14596,6 +14643,22 @@ export namespace Prisma {
     _max?: NestedEnumResourceFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -14675,7 +14738,7 @@ export namespace Prisma {
 
   export type ExpenseCreateWithoutUserInput = {
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -14686,7 +14749,7 @@ export namespace Prisma {
     id?: number
     name: string
     expense_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -14704,7 +14767,7 @@ export namespace Prisma {
 
   export type IncomeCreateWithoutUserInput = {
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -14715,7 +14778,7 @@ export namespace Prisma {
     id?: number
     name: string
     income_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -14857,7 +14920,7 @@ export namespace Prisma {
     id?: IntFilter<"Expense"> | number
     name?: StringFilter<"Expense"> | string
     expense_type_id?: IntFilter<"Expense"> | number
-    amount?: StringFilter<"Expense"> | string
+    amount?: FloatFilter<"Expense"> | number
     created_at?: DateTimeFilter<"Expense"> | Date | string
     updated_at?: DateTimeFilter<"Expense"> | Date | string
     user_id?: IntFilter<"Expense"> | number
@@ -14887,7 +14950,7 @@ export namespace Prisma {
     id?: IntFilter<"Income"> | number
     name?: StringFilter<"Income"> | string
     income_type_id?: IntFilter<"Income"> | number
-    amount?: StringFilter<"Income"> | string
+    amount?: FloatFilter<"Income"> | number
     created_at?: DateTimeFilter<"Income"> | Date | string
     updated_at?: DateTimeFilter<"Income"> | Date | string
     user_id?: IntFilter<"Income"> | number
@@ -14918,7 +14981,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Transfer"> | string | null
     sender_id?: IntFilter<"Transfer"> | number
     recipient_id?: IntFilter<"Transfer"> | number
-    amount?: IntFilter<"Transfer"> | number
+    amount?: FloatFilter<"Transfer"> | number
     created_at?: DateTimeFilter<"Transfer"> | Date | string
     deleted?: BoolFilter<"Transfer"> | boolean
   }
@@ -15329,7 +15392,7 @@ export namespace Prisma {
 
   export type ExpenseCreateWithoutExpenseTypeInput = {
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -15339,7 +15402,7 @@ export namespace Prisma {
   export type ExpenseUncheckedCreateWithoutExpenseTypeInput = {
     id?: number
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -15374,7 +15437,7 @@ export namespace Prisma {
 
   export type IncomeCreateWithoutIncomeTypeInput = {
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -15384,7 +15447,7 @@ export namespace Prisma {
   export type IncomeUncheckedCreateWithoutIncomeTypeInput = {
     id?: number
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -15619,7 +15682,7 @@ export namespace Prisma {
     id?: number
     name: string
     expense_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -15629,7 +15692,7 @@ export namespace Prisma {
     id?: number
     name: string
     income_type_id: number
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted?: boolean
@@ -15663,7 +15726,7 @@ export namespace Prisma {
 
   export type ExpenseUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15674,7 +15737,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     expense_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15684,7 +15747,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     expense_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15692,7 +15755,7 @@ export namespace Prisma {
 
   export type IncomeUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15703,7 +15766,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     income_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15713,7 +15776,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     income_type_id?: IntFieldUpdateOperationsInput | number
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15721,7 +15784,7 @@ export namespace Prisma {
 
   export type TransferUpdateWithoutSenderInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     recipient?: UserUpdateOneRequiredWithoutReceivedTransfersNestedInput
@@ -15731,7 +15794,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     recipient_id?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -15740,14 +15803,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     recipient_id?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TransferUpdateWithoutRecipientInput = {
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
     sender?: UserUpdateOneRequiredWithoutSentTransfersNestedInput
@@ -15757,7 +15820,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     sender_id?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -15766,7 +15829,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     sender_id?: IntFieldUpdateOperationsInput | number
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -15861,7 +15924,7 @@ export namespace Prisma {
   export type ExpenseCreateManyExpenseTypeInput = {
     id?: number
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -15870,7 +15933,7 @@ export namespace Prisma {
 
   export type ExpenseUpdateWithoutExpenseTypeInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15880,7 +15943,7 @@ export namespace Prisma {
   export type ExpenseUncheckedUpdateWithoutExpenseTypeInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
@@ -15890,7 +15953,7 @@ export namespace Prisma {
   export type ExpenseUncheckedUpdateManyWithoutExpenseTypeInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
@@ -15900,7 +15963,7 @@ export namespace Prisma {
   export type IncomeCreateManyIncomeTypeInput = {
     id?: number
     name: string
-    amount: string
+    amount: number
     created_at?: Date | string
     updated_at?: Date | string
     user_id: number
@@ -15909,7 +15972,7 @@ export namespace Prisma {
 
   export type IncomeUpdateWithoutIncomeTypeInput = {
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted?: BoolFieldUpdateOperationsInput | boolean
@@ -15919,7 +15982,7 @@ export namespace Prisma {
   export type IncomeUncheckedUpdateWithoutIncomeTypeInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
@@ -15929,7 +15992,7 @@ export namespace Prisma {
   export type IncomeUncheckedUpdateManyWithoutIncomeTypeInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number

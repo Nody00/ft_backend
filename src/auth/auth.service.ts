@@ -27,8 +27,6 @@ export class AuthService {
       },
     });
 
-    console.log('dinov log foundUser', foundUser);
-
     if (!foundUser) {
       throw new HttpException(
         'Email or password are invalid!',

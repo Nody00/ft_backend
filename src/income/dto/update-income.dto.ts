@@ -1,4 +1,7 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateIncomeDto } from './create-income.dto';
+import { isNotEmpty, Max, Min } from 'class-validator';
 
-export class UpdateIncomeDto extends PartialType(CreateIncomeDto) {}
+export class UpdateIncomeDto {
+  @Min(0)
+  @Max(999999)
+  amount: number;
+}

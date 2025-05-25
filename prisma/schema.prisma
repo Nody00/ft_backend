@@ -88,7 +88,7 @@ model Expense {
   id             Int        @id @default(autoincrement())
   name           String
   expense_type_id Int
-  amount         String // Consider using Decimal or Float for monetary values in a real application
+  amount         Float // Consider using Decimal or Float for monetary values in a real application
   created_at     DateTime   @default(now())
   updated_at     DateTime   @updatedAt
   user_id        Int
@@ -103,7 +103,7 @@ model Income {
   id            Int        @id @default(autoincrement())
   name          String
   income_type_id Int
-  amount        String // Consider using Decimal or Float for monetary values in a real application
+  amount        Float // Consider using Decimal or Float for monetary values in a real application
   created_at    DateTime   @default(now())
   updated_at    DateTime   @updatedAt
   user_id       Int
@@ -137,7 +137,7 @@ model Transfer {
   description String?
   sender_id   Int
   recipient_id Int
-  amount      Int // Consider using Decimal or Float for monetary values in a real application
+  amount      Float // Consider using Decimal or Float for monetary values in a real application
   created_at  DateTime @default(now())
   sender      User     @relation("SentTransfers", fields: [sender_id], references: [id])
   recipient   User     @relation("ReceivedTransfers", fields: [recipient_id], references: [id])
