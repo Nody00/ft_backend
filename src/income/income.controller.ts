@@ -72,7 +72,10 @@ export class IncomeController {
 
   @Patch(':id')
   @Permissions('INCOME', 'UPDATE')
-  update(@Param('id') id: string, @Body() updateIncomeDto: UpdateIncomeDto) {
+  update(
+    @Param('id') id: string,
+    @Body(ValidationPipe) updateIncomeDto: UpdateIncomeDto,
+  ) {
     return this.incomeService.update(+id, updateIncomeDto);
   }
 
