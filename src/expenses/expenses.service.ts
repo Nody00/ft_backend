@@ -29,13 +29,24 @@ interface FindAllFilters {
 export class ExpensesService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  create(createExpenseDto: CreateExpenseDto) {
-    const foundUser = this.databaseService.user.findUnique({
+  async create(createExpenseDto: CreateExpenseDto) {
+    const foundUser = await this.databaseService.user.findUnique({
       where: { id: createExpenseDto.user_id, deleted: false },
+    });
+
+    const foundExpenseType = await this.databaseService.expenseType.findUnique({
+      where: { id: createExpenseDto.expense_type_id, deleted: false },
     });
 
     if (!foundUser) {
       throw new HttpException('No such user found!', HttpStatus.BAD_REQUEST);
+    }
+
+    if (!foundExpenseType) {
+      throw new HttpException(
+        'No such expense type found',
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
     return this.databaseService.expense.create({

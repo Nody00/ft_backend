@@ -29,13 +29,24 @@ interface FindAllFilters {
 export class IncomeService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  create(createIncomeDto: CreateIncomeDto) {
-    const foundUser = this.databaseService.user.findUnique({
+  async create(createIncomeDto: CreateIncomeDto) {
+    const foundUser = await this.databaseService.user.findUnique({
       where: { id: createIncomeDto.user_id, deleted: false },
+    });
+
+    const foundIncomeType = await this.databaseService.incomeType.findUnique({
+      where: { id: createIncomeDto.income_type_id, deleted: false },
     });
 
     if (!foundUser) {
       throw new HttpException('No such user found!', HttpStatus.BAD_REQUEST);
+    }
+
+    if (!foundIncomeType) {
+      throw new HttpException(
+        'No such income type found',
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
     return this.databaseService.income.create({
