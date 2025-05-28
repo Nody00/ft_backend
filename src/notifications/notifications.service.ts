@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
+import { DatabaseService } from 'src/database/database.service';
 
 @Injectable()
 export class NotificationsService {
-  create(createNotificationDto: CreateNotificationDto) {
-    return 'This action adds a new notification';
+  constructor(private readonly databaseService: DatabaseService) {}
+
+  async create(createNotificationDto: CreateNotificationDto) {
+    const result = await this.databaseService.notification.create({
+      data: createNotificationDto,
+    });
+
+    return result;
   }
 
   findAll() {

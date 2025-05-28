@@ -1,61 +1,112 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
-import { Prisma, RoleName } from 'generated/prisma';
+import { NotificationTypes, Prisma, RoleName } from 'generated/prisma';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
 import { Request } from 'express';
 import { UpdateNotificationDto } from 'src/notifications/dto/update-notification.dto';
+import { NotificationsGateway } from 'src/notifications/notifications.gateway';
+import { CreateNotificationDto } from 'src/notifications/dto/create-notification.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly databaseService: DatabaseService,
+    private readonly notificationsGateway: NotificationsGateway,
+  ) {}
 
   async createCustomer(createUserDto: CreateUserDto) {
-    const foundRole = await this.databaseService.role.findUnique({
-      where: { name: RoleName.CUSTOMER },
-    });
+    try {
+      const foundCustomer = await this.databaseService.user.findUnique({
+        where: { email: createUserDto.email },
+      });
 
-    if (!foundRole) {
-      throw new HttpException('No role found!', HttpStatus.BAD_REQUEST);
+      if (foundCustomer) {
+        throw new HttpException('User already exists!', HttpStatus.BAD_REQUEST);
+      }
+
+      const foundRole = await this.databaseService.role.findUnique({
+        where: { name: RoleName.CUSTOMER },
+      });
+
+      if (!foundRole) {
+        throw new HttpException('No role found!', HttpStatus.BAD_REQUEST);
+      }
+
+      const password = await bcrypt.hash(createUserDto.password, 12);
+
+      const customerObject = {
+        ...createUserDto,
+        password: password,
+        role_id: foundRole.id,
+      };
+
+      const createdUser = await this.databaseService.user.create({
+        data: customerObject,
+      });
+
+      const notification: CreateNotificationDto = {
+        type: NotificationTypes.NEW_USER,
+        description: `New user created with email: ${createdUser.email}.`,
+        user_id: createdUser.id,
+      };
+
+      await this.notificationsGateway.create(notification);
+
+      return createdUser;
+    } catch (error) {
+      console.error(error);
+      return error;
     }
-
-    const password = await bcrypt.hash(createUserDto.password, 12);
-
-    const customerObject = {
-      ...createUserDto,
-      password: password,
-      role_id: foundRole.id,
-    };
-
-    return this.databaseService.user.create({
-      data: customerObject,
-    });
   }
 
   async createAdmin(createUserDto: CreateUserDto) {
-    const foundRole = await this.databaseService.role.findUnique({
-      where: { name: RoleName.ADMIN },
-    });
+    try {
+      const foundAdmin = await this.databaseService.user.findUnique({
+        where: { email: createUserDto.email },
+      });
 
-    if (!foundRole) {
-      throw new HttpException('No role found!', HttpStatus.BAD_REQUEST);
+      if (foundAdmin) {
+        throw new HttpException('User already exists!', HttpStatus.BAD_REQUEST);
+      }
+
+      const foundRole = await this.databaseService.role.findUnique({
+        where: { name: RoleName.ADMIN },
+      });
+
+      if (!foundRole) {
+        throw new HttpException('No role found!', HttpStatus.BAD_REQUEST);
+      }
+
+      const password = await bcrypt.hash(createUserDto.password, 12);
+
+      const adminObject = {
+        ...createUserDto,
+        password: password,
+        role_id: foundRole.id,
+      };
+
+      const createdUser = await this.databaseService.user.create({
+        data: adminObject,
+        omit: {
+          password: true,
+        },
+      });
+
+      const notification: CreateNotificationDto = {
+        type: NotificationTypes.NEW_USER,
+        description: `New user created with email: ${createdUser.email}.`,
+        user_id: createdUser.id,
+      };
+
+      await this.notificationsGateway.create(notification);
+
+      return createdUser;
+    } catch (error) {
+      console.error(error);
+      return error;
     }
-
-    const password = await bcrypt.hash(createUserDto.password, 12);
-
-    const adminObject = {
-      ...createUserDto,
-      password: password,
-      role_id: foundRole.id,
-    };
-
-    return this.databaseService.user.create({
-      data: adminObject,
-      omit: {
-        password: true,
-      },
-    });
   }
 
   async findAll(role?: RoleName) {
