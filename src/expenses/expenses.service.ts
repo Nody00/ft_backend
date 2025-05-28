@@ -7,6 +7,8 @@ import {
   getWeekDateRange,
   getYearDateRange,
 } from 'src/income/helpers';
+import { NotificationsGateway } from 'src/notifications/notifications.gateway';
+import { CreateNotificationDto } from 'src/notifications/dto/create-notification.dto';
 
 interface FindAllFilters {
   expenseType?: string;
@@ -27,31 +29,50 @@ interface FindAllFilters {
 
 @Injectable()
 export class ExpensesService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly databaseService: DatabaseService,
+    private readonly notificationsGateway: NotificationsGateway,
+  ) {}
 
   async create(createExpenseDto: CreateExpenseDto) {
-    const foundUser = await this.databaseService.user.findUnique({
-      where: { id: createExpenseDto.user_id, deleted: false },
-    });
+    try {
+      const foundUser = await this.databaseService.user.findUnique({
+        where: { id: createExpenseDto.user_id, deleted: false },
+      });
 
-    const foundExpenseType = await this.databaseService.expenseType.findUnique({
-      where: { id: createExpenseDto.expense_type_id, deleted: false },
-    });
+      const foundExpenseType =
+        await this.databaseService.expenseType.findUnique({
+          where: { id: createExpenseDto.expense_type_id, deleted: false },
+        });
 
-    if (!foundUser) {
-      throw new HttpException('No such user found!', HttpStatus.BAD_REQUEST);
+      if (!foundUser) {
+        throw new HttpException('No such user found!', HttpStatus.BAD_REQUEST);
+      }
+
+      if (!foundExpenseType) {
+        throw new HttpException(
+          'No such expense type found',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      const createdExpense = await this.databaseService.expense.create({
+        data: createExpenseDto,
+      });
+
+      const notification: CreateNotificationDto = {
+        description: `Added new expense ${createdExpense.name}`,
+        type: 'NEW_EXPENSE',
+        user_id: createdExpense.user_id,
+      };
+
+      await this.notificationsGateway.create(notification);
+
+      return createdExpense;
+    } catch (error) {
+      console.error(error);
+      return error;
     }
-
-    if (!foundExpenseType) {
-      throw new HttpException(
-        'No such expense type found',
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-
-    return this.databaseService.expense.create({
-      data: createExpenseDto,
-    });
   }
 
   findAll(filters: FindAllFilters) {

@@ -7,6 +7,8 @@ import {
   getWeekDateRange,
   getYearDateRange,
 } from 'src/income/helpers';
+import { NotificationsGateway } from 'src/notifications/notifications.gateway';
+import { CreateNotificationDto } from 'src/notifications/dto/create-notification.dto';
 
 interface FindAllFilters {
   description?: string;
@@ -29,32 +31,54 @@ interface FindAllFilters {
 
 @Injectable()
 export class TransfersService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly databaseService: DatabaseService,
+    private readonly notificationsGateway: NotificationsGateway,
+  ) {}
 
   async create(createTransferDto: CreateTransferDto) {
-    // check sender and recipient ids
-    const foundSender = await this.databaseService.user.findUnique({
-      where: { id: +createTransferDto.sender_id, deleted: false },
-    });
+    try {
+      // check sender and recipient ids
+      const foundSender = await this.databaseService.user.findUnique({
+        where: { id: +createTransferDto.sender_id, deleted: false },
+      });
 
-    const foundRecipient = await this.databaseService.user.findUnique({
-      where: {
-        id: +createTransferDto.recipient_id,
-        deleted: false,
-      },
-    });
+      const foundRecipient = await this.databaseService.user.findUnique({
+        where: {
+          id: +createTransferDto.recipient_id,
+          deleted: false,
+        },
+      });
 
-    if (!foundSender) {
-      throw new HttpException('No such sender user', HttpStatus.BAD_REQUEST);
+      if (!foundSender) {
+        throw new HttpException('No such sender user', HttpStatus.BAD_REQUEST);
+      }
+
+      if (!foundRecipient) {
+        throw new HttpException(
+          'No such recipient user',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      const createdTransfer = await this.databaseService.transfer.create({
+        data: createTransferDto,
+      });
+
+      const payload: CreateNotificationDto = {
+        type: 'NEW_TRANSFER',
+        user_id: createdTransfer.sender_id,
+        description: `New transaction: ${createdTransfer.description}`,
+        data: createdTransfer,
+      };
+
+      await this.notificationsGateway.create(payload);
+
+      return createdTransfer;
+    } catch (error) {
+      console.error(error);
+      return error;
     }
-
-    if (!foundRecipient) {
-      throw new HttpException('No such recipient user', HttpStatus.BAD_REQUEST);
-    }
-
-    return this.databaseService.transfer.create({
-      data: createTransferDto,
-    });
   }
 
   findAll(filters: FindAllFilters) {

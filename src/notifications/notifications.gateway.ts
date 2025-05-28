@@ -37,10 +37,13 @@ export class NotificationsGateway
 
   async create(createNotificationDto: CreateNotificationDto) {
     // create notification in db
-    await this.notificationsService.create(createNotificationDto);
+    await this.notificationsService.create({
+      ...createNotificationDto,
+      data: undefined,
+    });
 
     // send alert to client to show the notification in app
-    this.server.emit(NotificationTypes.NEW_USER, createNotificationDto);
+    this.server.emit(createNotificationDto.type, createNotificationDto);
 
     // send email to user
   }

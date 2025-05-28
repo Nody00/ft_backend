@@ -7,6 +7,8 @@ import {
   getWeekDateRange,
   getYearDateRange,
 } from './helpers';
+import { NotificationsGateway } from 'src/notifications/notifications.gateway';
+import { CreateNotificationDto } from 'src/notifications/dto/create-notification.dto';
 
 interface FindAllFilters {
   incomeType?: string;
@@ -27,31 +29,49 @@ interface FindAllFilters {
 
 @Injectable()
 export class IncomeService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly databaseService: DatabaseService,
+    private readonly notificationsGateway: NotificationsGateway,
+  ) {}
 
   async create(createIncomeDto: CreateIncomeDto) {
-    const foundUser = await this.databaseService.user.findUnique({
-      where: { id: createIncomeDto.user_id, deleted: false },
-    });
+    try {
+      const foundUser = await this.databaseService.user.findUnique({
+        where: { id: createIncomeDto.user_id, deleted: false },
+      });
 
-    const foundIncomeType = await this.databaseService.incomeType.findUnique({
-      where: { id: createIncomeDto.income_type_id, deleted: false },
-    });
+      const foundIncomeType = await this.databaseService.incomeType.findUnique({
+        where: { id: createIncomeDto.income_type_id, deleted: false },
+      });
 
-    if (!foundUser) {
-      throw new HttpException('No such user found!', HttpStatus.BAD_REQUEST);
+      if (!foundUser) {
+        throw new HttpException('No such user found!', HttpStatus.BAD_REQUEST);
+      }
+
+      if (!foundIncomeType) {
+        throw new HttpException(
+          'No such income type found',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      const createdIncome = await this.databaseService.income.create({
+        data: createIncomeDto,
+      });
+
+      const payload: CreateNotificationDto = {
+        type: 'NEW_INCOME',
+        description: `New income added ${createdIncome.name}`,
+        user_id: createdIncome.user_id,
+      };
+
+      await this.notificationsGateway.create(payload);
+
+      return createdIncome;
+    } catch (error) {
+      console.error(error);
+      return error;
     }
-
-    if (!foundIncomeType) {
-      throw new HttpException(
-        'No such income type found',
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-
-    return this.databaseService.income.create({
-      data: createIncomeDto,
-    });
   }
 
   findAll(filters: FindAllFilters) {
