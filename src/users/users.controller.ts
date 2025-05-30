@@ -15,7 +15,9 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { PermissionsGuard } from 'src/permissions/permissions.guard';
 import { Permissions } from 'src/permissions/permissions.decorator';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
 @UseGuards(...[AuthGuard, PermissionsGuard])
 @Controller('users')
 export class UsersController {
