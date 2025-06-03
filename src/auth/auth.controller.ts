@@ -10,4 +10,9 @@ export class AuthController {
   create(@Body(ValidationPipe) loginDto: LoginDto) {
     return this.authService.signIn(loginDto);
   }
+
+  @Post('/refresh-token')
+  refresh(@Body() refreshToken: string) {
+    return this.authService.refreshToken(refreshToken);
+  }
 }

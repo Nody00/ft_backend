@@ -53,8 +53,63 @@ export class AuthService {
       user: { ...foundUser, password: undefined },
     };
 
+    const refreshPayload = {
+      sub: foundUser.id,
+    };
+
     return {
       access_token: await this.jwtService.signAsync(payload),
+      refresh_token: await this.jwtService.signAsync(refreshPayload, {
+        expiresIn: '7 days',
+      }),
+      user: { ...foundUser, password: undefined },
+    };
+  }
+
+  async refreshToken(refreshToken: string) {
+    if (!refreshToken)
+      throw new HttpException('No token', HttpStatus.BAD_REQUEST);
+
+    let token;
+    try {
+      token = await this.jwtService.verifyAsync(refreshToken);
+      if (!token)
+        throw new HttpException('Invalid token!', HttpStatus.BAD_REQUEST);
+    } catch (error) {
+      throw new HttpException('Invalid token!', HttpStatus.BAD_REQUEST);
+    }
+
+    const userId = token.sub;
+    const foundUser = await this.databaseService.user.findUnique({
+      where: { id: userId, deleted: false },
+      include: {
+        role: {
+          include: {
+            permissions: true,
+          },
+        },
+      },
+    });
+
+    if (!foundUser) {
+      throw new HttpException('User not found', HttpStatus.UNAUTHORIZED);
+    }
+
+    const payload = {
+      sub: foundUser.id,
+      user: { ...foundUser, password: undefined },
+    };
+
+    const refreshPayload = {
+      sub: foundUser.id,
+    };
+
+    return {
+      access_token: await this.jwtService.signAsync(payload),
+      refresh_token: await this.jwtService.signAsync(refreshPayload, {
+        expiresIn: '7 days',
+      }),
+      user: { ...foundUser, password: undefined },
     };
   }
 }
