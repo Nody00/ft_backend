@@ -12,7 +12,7 @@ export class AuthController {
   }
 
   @Post('/refresh-token')
-  refresh(@Body() refreshToken: string) {
-    return this.authService.refreshToken(refreshToken);
+  refresh(@Body() body: { refreshToken: string }) {
+    return this.authService.refreshToken(body.refreshToken);
   }
 }

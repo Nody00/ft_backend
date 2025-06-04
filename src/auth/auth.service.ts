@@ -5,6 +5,7 @@ import { DatabaseService } from 'src/database/database.service';
 
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { jwtConstants } from './constants';
 
 @Injectable()
 export class AuthService {
@@ -66,16 +67,22 @@ export class AuthService {
     };
   }
 
-  async refreshToken(refreshToken: string) {
-    if (!refreshToken)
+  async refreshToken(refreshToken) {
+    if (!refreshToken) {
       throw new HttpException('No token', HttpStatus.BAD_REQUEST);
+    }
 
     let token;
     try {
-      token = await this.jwtService.verifyAsync(refreshToken);
-      if (!token)
+      token = await this.jwtService.verifyAsync(refreshToken, {
+        secret: jwtConstants.secret,
+      });
+
+      if (!token) {
         throw new HttpException('Invalid token!', HttpStatus.BAD_REQUEST);
+      }
     } catch (error) {
+      console.error(error);
       throw new HttpException('Invalid token!', HttpStatus.BAD_REQUEST);
     }
 
